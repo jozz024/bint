@@ -21,38 +21,194 @@ class BinManager:
                 fp_d.read(), fp_t.read()
             )
 
-    def __open_bin(self, bin_location):
+    def __open_bin(self, bin_location=None, dump=None):
         """
         Opens a bin and makes it 540 bytes if it wasn't
 
         :param bin_location: file location of bin you want to open
         :return: opened bin
         """
-        bin_fp = open(bin_location, "rb")
+        if dump == None: 
+            bin_fp = open(bin_location, "rb")
+        else:
+            bin_fp = dump
 
         bin_dump = bytes()
-        for line in bin_fp:
+        if dump == None: 
+          for line in bin_fp:
             bin_dump += line
-        bin_fp.close()
+          bin_fp.close()
+        else:
+            bin_dump = bin_fp
 
         if len(bin_dump) == 540:
+          if dump == None: 
             with open(bin_location, "rb") as fp:
                 dump = AmiiboDump(self.master_keys, fp.read())
                 return dump
+          else:
+            dump = AmiiboDump(self.master_keys, dump)
+            return dump
         elif 532 <= len(bin_dump) <= 572:
             while len(bin_dump) < 540:
                 bin_dump += b"\x00"
             if len(bin_dump) > 540:
                 bin_dump = bin_dump[: -(len(bin_dump) - 540)]
-            b = open(bin_location, "wb")
-            b.write(bin_dump)
-            b.close()
-
-            with open(bin_location, "rb") as fp:
+            if dump == None: 
+              b = open(bin_location, "wb")
+              b.write(bin_dump)
+              b.close()
+            if dump == None: 
+              with open(bin_location, "rb") as fp:
                 dump = AmiiboDump(self.master_keys, fp.read())
-                return dump
+            else:
+                dump = AmiiboDump(self.master_keys, dump)
+            return dump
         else:
             return None
+
+
+    def getBit(self, number, bit_index):
+        return (number >> bit_index) % 2
+
+
+    def getBits(self, number, bit_index, number_of_bits):
+      # clears bits we don't care about
+      inv_number = 255 - (number & ~(2**number_of_bits-1 << bit_index))
+
+      return (number & inv_number) >> bit_index
+
+
+    def setBit(self, number, bit_index, value):
+      bit_index = 7 - bit_index
+      # clears bit
+      number = number & ~(1 << bit_index)
+      # sets bit
+      return number | (value << bit_index)
+
+
+    def setBits(self, number, bit_index, number_of_bits, value):
+      """
+      Ex. setBits(b'11011100', 4, 3, b'0000') = 10001100
+      :param number: input that you want to set bits in
+      :param bit_index: range from 0 to 7, where 0 is the right most bit
+      :param number_of_bits: range from 1 to 8
+      :param value: value that you want the bits to be set to
+      :return:
+      """
+      # clears bit
+      number = number & ~(2**number_of_bits-1 << bit_index)
+      # sets bit
+      return number | (value << bit_index)
+
+
+    def concatonateBits(self, left, right, right_size):
+      # can't use right.bit_length() because of cases where right is 0 but is 2 bits
+      left = left << right_size
+      return left | right
+
+
+
+    SECTIONS = {
+    "Near": 7,
+    "Offensive": 7,
+    "Grounded": 7,
+    "Attack Out Cliff": 6,
+    "Dash": 7,
+    "Return To Cliff": 6,
+    "Air Offensive": 6,
+    "Cliffer": 6,
+    "Feint Master": 7,
+    "Feint Counter": 7,
+    "Feint Shooter": 7,
+    "Catcher": 7,
+    "100 Attacker": 6,
+    "100 Keeper": 6,
+    "Attack Cancel": 6,
+    "Smash Holder": 7,
+    "Dash Attacker": 7,
+    "Critical Hitter": 6,
+    "Meteor Smasher": 6,
+    "Shield Master": 7,
+    "Just Shield Master": 6,
+    "Shield Catch Master": 6,
+    "Item Collector": 5,
+    "Item Throw to Target": 5,
+    "Dragoon Collector": 4,
+    "Smash Ball Collector": 4,
+    "Hammer Collector": 4,
+    "Special Flagger": 4,
+    "Item Swinger": 5,
+    "Homerun Batter": 4,
+    "Club Swinger": 4,
+    "Death Swinger": 4,
+    "Item Shooter": 5,
+    "Carrier Breaker": 5,
+    "Charger": 5,
+    "Appeal": 5,
+    "Advantageous Fighter": 14,
+    "Weaken Fighter": 14,
+    "Revenge": 14,
+    "Stage Enemy": 14,
+    "Forward Tilt": 10,
+    "Up Tilt": 10,
+    "Down Tilt": 10,
+    "Forward Smash": 10,
+    "Up Smash": 10,
+    "Down Smash": 10,
+    "Neutral Special": 10,
+    "Side Special": 10,
+    "Up Special": 10,
+    "Down Special": 10,
+    "Forward Air": 9,
+    "Back Air": 9,
+    "Up Air": 9,
+    "Down Air": 9,
+    "Neutral Special Air": 9,
+    "Side Special Air": 9,
+    "Up Special Air": 9,
+    "Down Special Air": 9,
+    "Front Air Dodge": 8,
+    "Back Air Dodge": 8,
+    "APPEAL_HI": 7,
+    "APPEAL_LW": 7,
+    }
+
+
+    def bineval(self, bin_location):
+      
+      dump = AmiiboDump(self.master_keys, bin_location)
+      dump.unlock()
+      bits_left = 8
+      current_index = 444
+      output = ""
+      for sectione in self.SECTIONS:
+        section = self.SECTIONS[sectione]
+        if bits_left >= section:
+            value = self.getBits(dump.data[current_index], 8 - bits_left, section)
+            bits_left -= section
+        else:
+            value = self.getBits(dump.data[current_index], 8 - bits_left, bits_left)
+            current_index += 1
+            bits_requested = section - bits_left
+            while bits_requested != 0:
+                if bits_requested < 8:
+                    value = self.concatonateBits(self.getBits(dump.data[current_index], 0, bits_requested), value, section-bits_requested)
+                    bits_left = 8 - bits_requested
+                    bits_requested = 0
+                else:
+                    value = self.concatonateBits(self.getBits(dump.data[current_index], 0, 8), value, bits_left)
+                    current_index += 1
+                    bits_left = 8
+                    bits_requested -= 8
+
+        if bits_left == 0:
+            bits_left = 8
+            current_index += 1
+
+        output += f"{sectione}: {value/(2**section-1)*100}\n"
+      return f"```{output}```"
+
 
     def update_char_dictionary(self, new_char_dict):
         """
@@ -63,14 +219,14 @@ class BinManager:
         """
         self.characters = new_char_dict
 
-    def randomize_sn(self, dump=None, bin_location=None):
+    def randomize_sn(self, dump=None, dump_ = None):
         """
         Randomizes the serial number of a given bin dump
         :param dump: Pyamiibo dump of a bin
         :return: None
         """
-        if bin_location is not None:
-            dump = self.__open_bin(bin_location)
+        if dump_ != None:
+            dump = self.__open_bin(dump = dump_)
         serial_number = "04"
         while len(serial_number) < 20:
             temp_sn = hex(random.randint(0, 255))
@@ -87,19 +243,16 @@ class BinManager:
             dump.unlock()
             dump.uid_hex = serial_number
             dump.lock()
-        if bin_location is not None:
-            with open(bin_location, "wb") as fp:
-                fp.write(dump.data)
+        return dump
 
     def setspirits(
         self,
-        bin_location,
         attack,
         defense,
         ability1,
         ability2,
         ability3,
-        saveAs_location,
+        dump
     ):
         try:
             ability1 = SPIRITSKILLTABLE[ability1.lower()]
@@ -120,7 +273,7 @@ class BinManager:
         hexability3 = int(SPIRITSKILLS[ability3.lower()])
         maxstats = 5000
 
-        dump = self.__open_bin(bin_location)
+        dump = self.__open_bin(dump=dump)
         dump.unlock()
 
         slotsfilled = (
@@ -134,8 +287,6 @@ class BinManager:
             maxstats = maxstats - 500
         if slotsfilled == 3:
             maxstats = maxstats - 800
-        print(hexatk + hexdef)
-        print(maxstats)
         if hexatk + hexdef <= maxstats:
             dump.data[0x1A4:0x1A6] = hexatk.to_bytes(2, "little")
             dump.data[0x1A6:0x1A8] = hexdef.to_bytes(2, "little")
@@ -143,8 +294,7 @@ class BinManager:
             dump.data[0x141:0x142] = hexability2.to_bytes(1, "little")
             dump.data[0x142:0x143] = hexability3.to_bytes(1, "little")
             dump.lock()
-            with open(saveAs_location, "wb") as fp:
-                fp.write(dump.data)
+            return dump.data
         else:
             dump.lock()
             raise IndexError("Illegal Bin")
@@ -163,13 +313,11 @@ class BinManager:
         internal[0x1DC:0x208] = dump[0x054:0x080]
         return internal
 
-    def decrypt(self, bin_location, saveAs_location):
-        with open(bin_location, "rb") as fp:
-            dump = AmiiboDump(self.master_keys, fp.read())
+    def decrypt(self, dump):
+        dump = AmiiboDump(self.master_keys, dump)
         dump.unlock()
         data = self.dump_to_amiitools(dump.data)
-        with open(saveAs_location, "wb") as fp:
-            fp.write(data)
+        return data
 
     def personalityedit(
         self,
@@ -195,7 +343,7 @@ class BinManager:
         with open(saveAs_location, "wb") as fp:
             fp.write(dump.data)
 
-    def transplant(self, bin_location, character, saveAs_location, randomize_SN=False):
+    def transplant(self,  character, saveAs_location = None, randomize_SN=False, bin_location = None, dump = None):
         """
         Takes a bin and replaces it's character ID with given character's ID
 
@@ -205,8 +353,12 @@ class BinManager:
         :param saveAs_location: location to save new bin
         :return: Character it was transplanted into
         """
-
-        dump = self.__open_bin(bin_location)
+        if dump is None:
+            dump = self.__open_bin(bin_location)
+            using_stream = False
+        else: 
+            dump = self.__open_bin(dump=dump)
+            using_stream = True
         mii_transplant = "B3E038270F1D4C92ABCEF5427D67F9DCEC30CE3000000000000000000000000000000000000000000040400000000000001F02000208040304020C1302040306020C010409171304030D080000040A0008040A0004021400"
         if dump is None:
             return None
@@ -244,9 +396,12 @@ class BinManager:
         dump.data[0x148:0x1A0] = bytes.fromhex(mii_transplant)
         dump.data[84:92] = bytes.fromhex(hex_tag)
         dump.lock()
-        with open(saveAs_location, "wb") as fp:
-            fp.write(dump.data)
-        return character
+        if using_stream == False:
+            with open(saveAs_location, "wb") as fp:
+                fp.write(dump.data)
+            return character
+        else:
+            return dump.data
 
     def serial_swapper(self, donor, receiver, saveAs_location):
         """
