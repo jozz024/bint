@@ -62,7 +62,7 @@ class BinManager:
               with open(bin_location, "rb") as fp:
                 dump = AmiiboDump(self.master_keys, fp.read())
             else:
-                dump = AmiiboDump(self.master_keys, dump)
+                dump = AmiiboDump(self.master_keys, bin_dump)
             return dump
         else:
             return None
@@ -177,7 +177,7 @@ class BinManager:
 
     def bineval(self, bin_location):
       
-      dump = AmiiboDump(self.master_keys, bin_location)
+      dump = self.__open_bin(dump=bin_location)
       dump.unlock()
       bits_left = 8
       current_index = 444
