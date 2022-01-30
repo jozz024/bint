@@ -87,19 +87,19 @@ class BinManager:
       return number | (value << bit_index)
 
 
-    def setBits(self, number, bit_index, number_of_bits, value):
-      """
-      Ex. setBits(b'11011100', 4, 3, b'0000') = 10001100
-      :param number: input that you want to set bits in
-      :param bit_index: range from 0 to 7, where 0 is the right most bit
-      :param number_of_bits: range from 1 to 8
-      :param value: value that you want the bits to be set to
-      :return:
-      """
-      # clears bit
-      number = number & ~(2**number_of_bits-1 << bit_index)
-      # sets bit
-      return number | (value << bit_index)
+    def setBits(number, bit_index, number_of_bits, value):
+        """
+        Ex. setBits(b'11011100', 4, 3, b'0000') = 11000100
+        :param number: input that you want to set bits in
+        :param bit_index: range from 0 to 7, where 0 is the left most bit
+        :param number_of_bits: range from 1 to 8
+        :param value: value that you want the bits to be set to
+        :return:
+        """
+        # clears bit
+        number = int(number, 2) & ~(2**number_of_bits-1 << 7-bit_index)
+        # sets bit
+        return number | (int(value, 2) << 7-bit_index)
 
 
     def concatonateBits(self, left, right, right_size):
@@ -317,31 +317,26 @@ class BinManager:
         dump = AmiiboDump(self.master_keys, dump)
         dump.unlock()
         data = self.dump_to_amiitools(dump.data)
-        return data
+        return dump.data
 
-    def personalityedit(
-        self,
-        bin_location,
-        aggression,
-        edgeguard,
-        anticipation,
-        defensiveness,
-        saveAs_location,
-    ):
-        aggression = int(aggression)
-        edgeguard = int(edgeguard)
-        anticipation = int(anticipation)
-        defensiveness = int(defensiveness)
-        with open(bin_location, "rb") as fp:
-            dump = AmiiboDump(self.master_keys, fp.read())
-        dump.unlock()
-        dump.data[0x1BC:0x1BE] = aggression.to_bytes(2, "little")
-        dump.data[0x1BE:0x1C0] = edgeguard.to_bytes(2, "little")
-        dump.data[0x1C0:0x1C2] = anticipation.to_bytes(2, "little")
-        dump.data[0x1C2:0x1C4] = defensiveness.to_bytes(2, "little")
-        dump.lock()
-        with open(saveAs_location, "wb") as fp:
-            fp.write(dump.data)
+    def personalityedit(self, dump, offset, bit_index, number_of_bits, value):
+        dump = self.__open_bin(dump=dump)
+
+        scale = 16 ## equals to hexadecimal
+
+        num_of_bits = 8
+
+        hexdata = self.dump.data[offset]
+
+        number = bin(int(hexdata, scale))[2:].zfill(num_of_bits)
+        # clears bit
+        number = int(number, 2) & ~(2**number_of_bits-1 << 7-bit_index)
+        # sets bit
+        dump.data[offset] = number | (int(value, 2) << 7-bit_index)
+
+        return dump.data
+
+
 
     def transplant(self,  character, saveAs_location = None, randomize_SN=False, bin_location = None, dump = None):
         """
@@ -429,3 +424,5 @@ class BinManager:
             fp.write(receiver_dump.data)
 
         return True
+
+print(BinManager.setBits(b'11011100', 4, 3, b'0000'))
