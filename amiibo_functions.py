@@ -2,8 +2,8 @@ from amiibo import AmiiboMasterKey
 from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
 import random
 from dictionaries import *
-
-
+import json
+import base64
 class BinManager:
     def __init__(self, char_dict, key_directory="Brain_Transplant_Assets"):
         """
@@ -336,7 +336,18 @@ class BinManager:
 
         return dump.data
 
-
+    def ryu2bin(self, ryudata):
+                ryujson = json.loads(ryudata)
+                with open("./templates/template.bin", "rb") as fp:
+                    dump = AmiiboDump(self.master_keys, fp.read())
+                dump.unlock()
+                dump.app_id = ryujson['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
+                dump.data[0x130:0x208] = bytes.fromhex(base64.b64decode(ryujson["ApplicationAreas"][0]['ApplicationArea']).hex())
+                dump.data[84:92] = bytes.fromhex(ryujson['AmiiboId'])
+                dump.amiibo_nickname = ryujson['Name']
+                dump.write_counter = ryujson['WriteCounter']
+                dump.lock()
+                return dump.data
 
     def transplant(self,  character, saveAs_location = None, randomize_SN=False, bin_location = None, dump = None):
         """
