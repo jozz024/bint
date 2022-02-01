@@ -78,7 +78,7 @@ class binCog(commands.Cog):
     @commands.command(name="ryu2bin")
     async def ryu2bin(self, ctx):
       v = binmanagerinit.ryu2bin(ryudata = await ctx.message.attachments[0].read())
-      vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
+      vb = File(io.BytesIO(v), filename = str(ctx.message.attachments[0].filename).replace('.json', '.bin'))
       await ctx.send(file=vb)
     @commands.command(name="convert")
     @commands.dm_only()
