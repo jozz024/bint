@@ -7,6 +7,7 @@ from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
 from nextcord import File
 import io
 import re
+import traceback
 from nextcord.ext.commands import Context
 import asyncio
 import re
@@ -14,7 +15,7 @@ import re
 default_assets_location = r"Brain_Transplant_Assets"
 characters_location = r"Brain_Transplant_Assets/characters.xml"
 char_dict = CharacterDictionary(characters_location)
-binmanagerinit = BinManager(char_dict)
+binmanager = BinManager(char_dict)
 
 
 class binCog(commands.Cog):
@@ -74,11 +75,18 @@ class binCog(commands.Cog):
                     return
     @commands.command(name="bineval")
     async def bineval(self, ctx):
-        await ctx.send(binmanagerinit.bineval(await ctx.message.attachments[0].read()))
+        await ctx.send(binmanager.bineval(await ctx.message.attachments[0].read()))
+        
     @commands.command(name="ryu2bin")
     async def ryu2bin(self, ctx):
-      v = binmanagerinit.ryu2bin(ryudata = await ctx.message.attachments[0].read())
+      v = binmanager.ryu2bin(ryudata = await ctx.message.attachments[0].read())
       vb = File(io.BytesIO(v), filename = str(ctx.message.attachments[0].filename).replace('.json', '.bin'))
+      await ctx.send(file=vb)
+
+    @commands.command(name="bin2ryu")
+    async def bin2ryu(self, ctx):
+      v = binmanager.bin2ryu(dump_ = await ctx.message.attachments[0].read())
+      vb = File(io.BytesIO(v.encode('utf-8')), filename = str(ctx.message.attachments[0].filename).replace('.bin', '.json'))
       await ctx.send(file=vb)
     @commands.command(name="convert")
     @commands.dm_only()
@@ -116,7 +124,7 @@ class binCog(commands.Cog):
     async def brain_transplant(self, ctx, *, character):
         try:
             character = character
-            v = binmanagerinit.transplant(
+            v = binmanager.transplant(
                   character=character.title(),
                   randomize_SN=True,
                   dump = await ctx.message.attachments[0].read()
@@ -128,7 +136,7 @@ class binCog(commands.Cog):
                 character = TRANSLATION_TABLE_CHARACTER_TRANSPLANT[
                     character.replace(" ", "")
                 ]
-                v = binmanagerinit.transplant(
+                v = binmanager.transplant(
                   character=character.title(),
                   randomize_SN=True,
                   dump = await ctx.message.attachments[0].read()
@@ -143,7 +151,7 @@ class binCog(commands.Cog):
     async def shufflenfpsn(self, ctx):
         vb = []
         for files in ctx.message.attachments:
-          v = binmanagerinit.randomize_sn(dump_=await files.read())
+          v = binmanager.randomize_sn(dump_=await files.read())
           vb.append(File(io.BytesIO(v.data), filename = files.filename))
         await ctx.send(files=vb)
 
@@ -156,7 +164,7 @@ class binCog(commands.Cog):
         print(ability2)
         print(ability3)
         try:
-            v = binmanagerinit.setspirits(
+            v = binmanager.setspirits(
                 attack,
                 defense,
                 ability1,
@@ -189,14 +197,14 @@ class binCog(commands.Cog):
     @commands.command(name="decrypt")
     @commands.is_owner()
     async def decrypt(self, ctx):
-        v = binmanagerinit.decrypt(await ctx.message.attachments[0].read())
+        v = binmanager.decrypt(await ctx.message.attachments[0].read())
         vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
         await ctx.send(file=vb)
 
     @commands.command(name="binedit")
     @commands.is_owner()
     async def binedit(self, ctx, offset, bit_index, number_of_bits, value):
-        v = binmanagerinit.personalityedit(await ctx.message.attachments[0].read(), offset, bit_index, number_of_bits, value)
+        v = binmanager.personalityedit(await ctx.message.attachments[0].read(), offset, bit_index, number_of_bits, value)
         vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
         await ctx.send(file=vb)
 

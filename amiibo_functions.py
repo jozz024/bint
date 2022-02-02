@@ -338,17 +338,31 @@ class BinManager:
 
     def ryu2bin(self, ryudata):
                 ryujson = json.loads(ryudata)
-                with open("./templates/template.bin", "rb") as fp:
-                    dump = AmiiboDump(self.master_keys, fp.read())
+                dump = self.__open_bin("./templates/template.bin")
                 dump.unlock()
                 dump.app_id = ryujson['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
                 dump.data[0x130:0x208] = bytes.fromhex(base64.b64decode(ryujson["ApplicationAreas"][0]['ApplicationArea']).hex())
                 dump.data[84:92] = bytes.fromhex(ryujson['AmiiboId'])
-                dump.amiibo_nickname = ryujson['Name']
+                if ryujson['name']:
+                    dump.amiibo_nickname = ryujson['Name']
                 dump.write_counter = ryujson['WriteCounter']
                 dump.lock()
                 return dump.data
 
+
+    def bin2ryu(self, dump_):
+        dump = self.__open_bin(dump = dump_)
+        dump.unlock()
+        appdata = dump.data[0x130:0x208]
+        appdata_to_ryu = str(base64.b64encode(appdata)).strip('b').strip("'")
+        with open('templates' + '/' + 'template.json') as jsontemplate:
+                ryutemplate = json.load(jsontemplate)
+        chara_id = dump.data[84:92].hex()
+        uuid = dump.data[0x0:0x08]
+        name = dump.amiibo_nickname
+        uuid_to_ryu = str(base64.b64encode(uuid)).strip('b').strip("'")
+        to_json = str(ryutemplate).replace(ryutemplate["ApplicationAreas"][0]['ApplicationArea'], appdata_to_ryu).replace(ryutemplate["Name"], name).replace(ryutemplate["AmiiboId"], str(chara_id)).replace(ryutemplate['TagUuid'], uuid_to_ryu)
+        return to_json.replace(' ', '').replace("'", '"')
     def transplant(self,  character, saveAs_location = None, randomize_SN=False, bin_location = None, dump = None):
         """
         Takes a bin and replaces it's character ID with given character's ID
