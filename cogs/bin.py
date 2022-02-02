@@ -11,6 +11,8 @@ import traceback
 from nextcord.ext.commands import Context
 import asyncio
 import re
+import os
+import sys 
 
 default_assets_location = r"Brain_Transplant_Assets"
 characters_location = r"Brain_Transplant_Assets/characters.xml"
@@ -22,6 +24,9 @@ class binCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.bot.async_call_shell = self.async_call_shell
+        
+    def restart_bot(self): 
+        os.execv(sys.executable, ['py'] + sys.argv)
 
     async def async_call_shell(
         self, shell_command: str, inc_stdout=True, inc_stderr=True
@@ -73,10 +78,16 @@ class binCog(commands.Cog):
                         f"```\n{traceback.format_exc()}\n```"
                     )
                     return
+
     @commands.command(name="bineval")
     async def bineval(self, ctx):
         await ctx.send(binmanager.bineval(await ctx.message.attachments[0].read()))
-        
+
+    @commands.is_owner()
+    @commands.command(name = 'restart')
+    async def restart(self, ctx):
+        self.restart_bot()
+
     @commands.command(name="ryu2bin")
     async def ryu2bin(self, ctx):
       v = binmanager.ryu2bin(ryudata = await ctx.message.attachments[0].read())
@@ -88,6 +99,7 @@ class binCog(commands.Cog):
       v = binmanager.bin2ryu(dump_ = await ctx.message.attachments[0].read())
       vb = File(io.BytesIO(v.encode('utf-8')), filename = str(ctx.message.attachments[0].filename).replace('.bin', '.json'))
       await ctx.send(file=vb)
+
     @commands.command(name="convert")
     @commands.dm_only()
     async def convert_nfc_tools_file_to_bin(self, ctx):
