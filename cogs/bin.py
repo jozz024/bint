@@ -1,95 +1,27 @@
-from nextcord.ext import commands
-from dictionaries import *
-from character_dictionary import CharacterDictionary
-from amiibo_functions import BinManager
-from amiibo import AmiiboMasterKey
-from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
-from nextcord import File
 import io
 import re
-import traceback
+
+from amiibo import AmiiboMasterKey
+from amiibo_functions import BinManager
+from character_dictionary import CharacterDictionary
+from dictionaries import TRANSLATION_TABLE_CHARACTER_TRANSPLANT
+from nextcord import File
+from nextcord.ext import commands
 from nextcord.ext.commands import Context
-import asyncio
-import re
-import os
-import sys 
+from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
 
 default_assets_location = r"Brain_Transplant_Assets"
 characters_location = r"Brain_Transplant_Assets/characters.xml"
 char_dict = CharacterDictionary(characters_location)
 binmanager = BinManager(char_dict)
-
-
 class binCog(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-        self.bot.async_call_shell = self.async_call_shell
-        
-    def restart_bot(self): 
-        os.execv(sys.executable, ['py'] + sys.argv)
-
-    async def async_call_shell(
-        self, shell_command: str, inc_stdout=True, inc_stderr=True
-    ):
-        pipe = asyncio.subprocess.PIPE
-        proc = await asyncio.create_subprocess_shell(
-            str(shell_command), stdout=pipe, stderr=pipe
-        )
-
-        if not (inc_stdout or inc_stderr):
-            return "??? you set both stdout and stderr to False????"
-
-        proc_result = await proc.communicate()
-        stdout_str = proc_result[0].decode("utf-8").strip()
-        stderr_str = proc_result[1].decode("utf-8").strip()
-
-        if inc_stdout and not inc_stderr:
-            return stdout_str
-        elif inc_stderr and not inc_stdout:
-            return stderr_str
-
-        if stdout_str and stderr_str:
-            return f"stdout:\n\n{stdout_str}\n\n" f"======\n\nstderr:\n\n{stderr_str}"
-        elif stdout_str:
-            return f"stdout:\n\n{stdout_str}"
-        elif stderr_str:
-            return f"stderr:\n\n{stderr_str}"
-
-        return "No output."
-
-    @commands.is_owner()
-    @commands.command()
-    async def pull(self, ctx: Context, auto=False):
-        """Does a git pull, bot manager only."""
-        tmp = await ctx.send("Pulling...")
-        git_output = await self.bot.async_call_shell("git pull")
-        await tmp.edit(content=f"Pull complete. Output: ```{git_output}```")
-        if auto:
-            cogs_to_reload = re.findall(r"cogs/([a-z_]*).py[ ]*\|", git_output)
-            for cog in cogs_to_reload:
-                cog_name = "cogs." + cog
-                try:
-                    self.bot.unload_extension(cog_name)
-                    self.bot.load_extension(cog_name)
-                    await ctx.send(f":white_check_mark: `{cog}` successfully reloaded.")
-                except:
-                    await ctx.send(
-                        f":x: Cog reloading failed, traceback: "
-                        f"```\n{traceback.format_exc()}\n```"
-                    )
-                    return
 
     @commands.command(name="bineval")
-    async def bineval(self, ctx):
+    async def bineval(self, ctx: Context):
         await ctx.send(binmanager.bineval(await ctx.message.attachments[0].read()))
 
-    @commands.is_owner()
-    @commands.command(name = 'restart')
-    async def restart(self, ctx):
-        self.restart_bot()
-
     @commands.command(name="ryu2bin")
-    async def ryu2bin(self, ctx):
+    async def ryu2bin(self, ctx: Context):
       v = binmanager.ryu2bin(ryudata = await ctx.message.attachments[0].read())
       vb = File(io.BytesIO(v), filename = str(ctx.message.attachments[0].filename).replace('.json', '.bin'))
       await ctx.send(file=vb)
@@ -133,7 +65,7 @@ class binCog(commands.Cog):
 
     @commands.command(name="transplant")
     @commands.dm_only()
-    async def brain_transplant(self, ctx, *, character):
+    async def brain_transplant(self, ctx: Context, *, character):
         try:
             character = character
             v = binmanager.transplant(

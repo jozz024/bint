@@ -182,8 +182,8 @@ class BinManager:
       bits_left = 8
       current_index = 444
       output = ""
-      for sectione in self.SECTIONS:
-        section = self.SECTIONS[sectione]
+      for sections in self.SECTIONS:
+        section = self.SECTIONS[sections]
         if bits_left >= section:
             value = self.getBits(dump.data[current_index], 8 - bits_left, section)
             bits_left -= section
@@ -206,7 +206,7 @@ class BinManager:
             bits_left = 8
             current_index += 1
 
-        output += f"{sectione}: {value/(2**section-1)*100}\n"
+        output += f"{sections}: {value/(2**section-1)*100}\n"
       return f"```{output}```"
 
 
@@ -343,7 +343,7 @@ class BinManager:
                 dump.app_id = ryujson['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
                 dump.data[0x130:0x208] = bytes.fromhex(base64.b64decode(ryujson["ApplicationAreas"][0]['ApplicationArea']).hex())
                 dump.data[84:92] = bytes.fromhex(ryujson['AmiiboId'])
-                if ryujson['name']:
+                if ryujson['Name']:
                     dump.amiibo_nickname = ryujson['Name']
                 dump.write_counter = ryujson['WriteCounter']
                 dump.lock()
