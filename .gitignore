@@ -1,9 +1,4 @@
-
 *.bin
-*.jpg
 ssbu_amiibo.py
 *.pyc
-owo.py
 *.csv
-slashtest.py
-*.json

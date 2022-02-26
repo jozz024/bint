@@ -1,0 +1,668 @@
+{
+    "characters": [
+        {
+            "Mario": [
+                "0000000000000002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Peach": [
+                "0002000000010002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Yoshi": [
+                "0003000000020002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Donkey Kong": [
+                "0008000000030002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Link": [
+                "0100000000040002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Fox": [
+                "0580000000050002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Samus": [
+                "05C0000000060002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Wii Fit Trainer": [
+                "0700000000070002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Villager": [
+                "0180000000080002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Pikachu": [
+                "1919000000090002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Kirby": [
+                "1F000000000A0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Marth": [
+                "21000000000B0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Zelda": [
+                "01010000000E0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Diddy Kong": [
+                "00090000000D0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Luigi": [
+                "00010000000C0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Little Mac": [
+                "06C00000000F0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Pit": [
+                "0740000000100002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Captain Falcon": [
+                "0600000000120002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Rosalina & Luma": [
+                "0004010000130002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Bowser": [
+                "0005000000140002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Lucario": [
+                "1AC0000000110002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Toon Link": [
+                "0100010000160002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Sheik": [
+                "0101010000170002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ike": [
+                "2101000000180002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Shulk": [
+                "22400000002B0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Sonic": [
+                "3200000000300002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Mega Man": [
+                "3480000000310002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "King Dedede": [
+                "1F02000000280002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Meta Knight": [
+                "1F01000000270002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Robin": [
+                "21030000002A0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Lucina": [
+                "2102000000290002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Wario": [
+                "00070000001A0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Charizard": [
+                "1906000000240002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ness": [
+                "22800000002C0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Pac-Man": [
+                "3340000000320002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Greninja": [
+                "1B92000000250002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Jigglypuff": [
+                "1927000000260002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Palutena": [
+                "07420000001F0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Dark Pit": [
+                "0741000000200002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Zero Suit Samus": [
+                "05C00100001D0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ganondorf": [
+                "01020100001B0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Dr Mario": [
+                "0000010000190002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Bowser Jr": [
+                "0006000000150002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Olimar": [
+                "06400100001E0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Mr Game & Watch": [
+                "07800000002D0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "ROB": [
+                "0781000000330002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Duck Hunt": [
+                "07820000002F0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Mii Brawler": [
+                "07C0000000210002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Mii Swordfighter": [
+                "07C0010000220002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Mii Gunner": [
+                "07C0020000230002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Mewtwo": [
+                "19960000023D0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Falco": [
+                "05810000001C0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Lucas": [
+                "2281000002510002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Roy": [
+                "2104000002520002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ryu": [
+                "34C0000002530002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Cloud": [
+                "3600000002590002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Corrin": [
+                "21050000025A0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Bayonetta": [
+                "32400000025B0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Inkling": [
+                "0800010003820002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ridley": [
+                "05C20000037F0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Wolf": [
+                "05840000037E0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "King K Rool": [
+                "00C00000037B0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ice Climbers": [
+                "078F000003810002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Piranha Plant": [
+                "00240000038D0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Daisy": [
+                "00130000037A0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Isabelle": [
+                "01810000037D0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Pichu": [
+                "19AC000003850002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ken": [
+                "34C1000003890002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Young Link": [
+                "01000000037C0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Pokemon Trainer": [
+                "1D40000003870002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Snake": [
+                "37800000038A0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Ivysaur": [
+                "1902000003830002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Squirtle": [
+                "1907000003840002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Simon": [
+                "37C00000038B0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Incineroar": [
+                "1BD7000003860002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Chrom": [
+                "2108000003880002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Dark Samus": [
+                "05C3000003800002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Richter": [
+                "37C10000038C0002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Joker": [
+                "3A00000003A10002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Hero": [
+                "3640000003A20002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Banjo": [
+                "3B40000003A30002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Terry": [
+                "3C80000003A40002",
+                {
+                    "enabled": true
+                }
+            ]
+        },
+        {
+            "Byleth": [
+                "210B000003A50002",
+                {
+                    "enabled": true
+                }
+            ]
+        }
+    ]
+}
