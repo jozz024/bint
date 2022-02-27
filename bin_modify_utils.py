@@ -1,11 +1,12 @@
 import json
 import random
+import re
 from base64 import b64decode, b64encode
 from datetime import datetime
 
 from amiibo import AmiiboMasterKey
 
-from dicts import (SKILLSLOTS, SPIRITSKILLS, SPIRITSKILLTABLE,
+from dicts import (SECTIONS, SKILLSLOTS, SPIRITSKILLS, SPIRITSKILLTABLE,
                    TRANSLATION_TABLE_CHARACTER_TRANSPLANT)
 from ssbu_amiibo import InvalidAmiiboDump
 from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
@@ -56,6 +57,12 @@ class BinUtils:
                 temp_sn = '0' + temp_sn
             serial_number += ' ' + temp_sn
         dump.uid_hex = serial_number
+        dump.lock()
+        return dump.data
+
+    def rename(self, new_name, data):
+        dump = self.open_dump(data)
+        dump.amiibo_nickname = new_name
         dump.lock()
         return dump.data
 
@@ -178,10 +185,83 @@ class Ryujinx(BinUtils):
         dump.lock()
         return dump.data
 
+class Evaluate(BinUtils):
+    def __init__(self):
+        super().__init__()
 
-# binutils = Ryujinx()
+    def open_dump(self, dump):
+        return super().open_dump(dump)
+
+    def getBits(self, number, bit_index, number_of_bits):
+        # clears bits we don't care about
+        inv_number = 255 - (number & ~(2**number_of_bits-1 << bit_index))
+
+        return (number & inv_number) >> bit_index
+
+    def concatonateBits(self, left, right, right_size):
+        # can't use right.bit_length() because of cases where right is 0 but is 2 bits
+        left = left << right_size
+        return left | right
+
+
+    def bineval(self, data):
+        dump = self.open_dump(data)
+        dump.unlock()
+        bits_left = 8
+        current_index = 444
+        output = ""
+        for sections in SECTIONS:
+            section = SECTIONS[sections]
+            if bits_left >= section:
+                value = self.getBits(dump.data[current_index], 8 - bits_left, section)
+                bits_left -= section
+            else:
+                value = self.getBits(dump.data[current_index], 8 - bits_left, bits_left)
+                current_index += 1
+                bits_requested = section - bits_left
+                while bits_requested != 0:
+                    if bits_requested < 8:
+                        value = self.concatonateBits(self.getBits(dump.data[current_index], 0, bits_requested), value, section-bits_requested)
+                        bits_left = 8 - bits_requested
+                        bits_requested = 0
+                    else:
+                        value = self.concatonateBits(self.getBits(dump.data[current_index], 0, 8), value, bits_left)
+                        current_index += 1
+                        bits_left = 8
+                        bits_requested -= 8
+
+            if bits_left == 0:
+                bits_left = 8
+                current_index += 1
+
+            output += f"{sections}: {value/(2**section-1)*100}\n"
+        return f"```{output}```"
+
+class NFCTools(BinUtils):
+    def __init__(self):
+        super().__init__()
+
+    def open_dump(self, dump):
+        return super().open_dump(dump)
+
+    def txt_to_bin(self, txt):
+        export_string_lines = None
+        hex = ""
+        file = str(txt, 'utf-8')
+        export_string_lines = file.splitlines()
+
+        for line in export_string_lines:
+            match = re.search(r"(?:[A-Fa-f0-9]{2}:){3}[A-Fa-f0-9]{2}", line)
+            if match:
+                hex = hex + match.group(0).replace(":", "")
+
+        bin = bytes.fromhex(hex)
+
+        return bin
+
+# binutils = NFCTools()
 #
-# with open('test.json', 'r') as test:
-#     bin = binutils.json_to_bin(test.read())
-# with open('test.bin', 'wb') as test:
+# with open('test.txt', 'rb') as test:
+#     bin = binutils.txt_to_bin(test.read())
+# with open('test2.bin', 'wb') as test:
 #     test.write(bin)
