@@ -1,5 +1,7 @@
 import json
 import random
+from base64 import b64decode, b64encode
+from datetime import datetime
 
 from amiibo import AmiiboMasterKey
 
@@ -132,8 +134,54 @@ class Spirits(BinUtils):
         dump.lock()
         return dump.data
 
-# binutils = Transplant()
-# with open('test.bin', 'rb') as test:
-#    bin = binutils.transplant('palu', test.read())
+class Ryujinx(BinUtils):
+    def __init__(self):
+        super().__init__()
+
+    def open_dump(self, dump):
+        return super().open_dump(dump)
+
+    def shuffle_sn(self, data):
+        return super().shuffle_sn(data)
+
+    def bin_to_json(self, data):
+        basejson = {}
+        dump = self.open_dump(data)
+        dump.unlock()
+        basejson['FileVersion'] = 0
+        basejson['Name'] = dump.amiibo_nickname
+        basejson['TagUuid'] = b64encode(dump.data[0x0:0x08]).decode('ASCII')
+        basejson['AmiiboId'] = dump.data[84:92].hex()
+        basejson['FirstWriteDate'] = datetime.now().isoformat()
+        basejson['LastWriteDate'] = datetime.now().isoformat()
+        basejson['WriteCounter'] = dump.write_counter
+        basejson['ApplicationAreas'] = [
+            {
+                "ApplicationAreaId": int(dump.app_id.hex(), 16),
+                "ApplicationArea": b64encode(dump.app_area).decode('ASCII'),
+            }
+        ]
+        return basejson
+
+    def json_to_bin(self, ryujinx_json):
+        ryujinx_json = json.loads(ryujinx_json)
+        with open('assets/templates/template.bin', 'rb') as template:
+            dump = self.open_dump(template.read())
+        dump.data = self.shuffle_sn(dump.data)
+        dump.unlock()
+        if 'Name' in ryujinx_json:
+            dump.amiibo_nickname = ryujinx_json['Name']
+        dump.data[84:92] = bytes.fromhex(ryujinx_json['AmiiboId'])
+        dump.write_counter = ryujinx_json['WriteCounter']
+        dump.app_id = ryujinx_json['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
+        dump.app_area = b64decode(ryujinx_json['ApplicationAreas'][0]['ApplicationArea'])
+        dump.lock()
+        return dump.data
+
+
+# binutils = Ryujinx()
+#
+# with open('test.json', 'r') as test:
+#     bin = binutils.json_to_bin(test.read())
 # with open('test.bin', 'wb') as test:
-#    test.write(bin)
+#     test.write(bin)
