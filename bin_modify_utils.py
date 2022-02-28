@@ -62,6 +62,7 @@ class BinUtils:
 
     def rename(self, new_name, data):
         dump = self.open_dump(data)
+        dump.unlock()
         dump.amiibo_nickname = new_name
         dump.lock()
         return dump.data
@@ -86,12 +87,17 @@ class Transplant(BinUtils):
             for name, namelist in character.items():
                 if character_name.title() == name:
                     dump.data[84:92] = bytes.fromhex(namelist[0])
-                elif character_name.lower().replace(' ', '')in TRANSLATION_TABLE_CHARACTER_TRANSPLANT:
+                    dump.lock()
+                    dump.data = self.shuffle_sn(dump.data)
+                    return dump.data
+                elif character_name.lower().replace(' ', '') in TRANSLATION_TABLE_CHARACTER_TRANSPLANT:
                     if TRANSLATION_TABLE_CHARACTER_TRANSPLANT[character_name.lower().replace(' ', '')].title() == name:
                         dump.data[84:92] = bytes.fromhex(namelist[0])
-        dump.lock()
-        dump.data = self.shuffle_sn(dump.data)
-        return dump.data
+                        dump.lock()
+                        dump.data = self.shuffle_sn(dump.data)
+                        return dump.data
+        raise KeyError
+
 
 class Spirits(BinUtils):
     def __init__(self):
@@ -168,7 +174,7 @@ class Ryujinx(BinUtils):
                 "ApplicationArea": b64encode(dump.app_area).decode('ASCII'),
             }
         ]
-        return basejson
+        return json.dumps(basejson, indent=4)
 
     def json_to_bin(self, ryujinx_json):
         ryujinx_json = json.loads(ryujinx_json)
