@@ -44,9 +44,7 @@ class BinUtils:
         else:
             raise InvalidAmiiboDump
 
-    def shuffle_sn(self, data):
-        dump = self.open_dump(data)
-        dump.unlock()
+    def shuffle_sn(self):
         serial_number = "04"
         while len(serial_number) < 20:
             temp_sn = hex(random.randint(0, 255))
@@ -56,9 +54,7 @@ class BinUtils:
             if len(temp_sn) == 1:
                 temp_sn = '0' + temp_sn
             serial_number += ' ' + temp_sn
-        dump.uid_hex = serial_number
-        dump.lock()
-        return dump.data
+        return serial_number
 
     def rename(self, new_name, data):
         dump = self.open_dump(data)
@@ -75,8 +71,8 @@ class Transplant(BinUtils):
     def open_dump(self, dump):
         return super().open_dump(dump)
 
-    def shuffle_sn(self, data):
-        return super().shuffle_sn(data)
+    def shuffle_sn(self):
+        return super().shuffle_sn()
 
     def transplant(self, character_name, data):
         character_json = open('assets/characters.json')
@@ -94,7 +90,7 @@ class Transplant(BinUtils):
                     if TRANSLATION_TABLE_CHARACTER_TRANSPLANT[character_name.lower().replace(' ', '')].title() == name:
                         dump.data[84:92] = bytes.fromhex(namelist[0])
                         dump.lock()
-                        dump.data = self.shuffle_sn(dump.data)
+                        dump.uid_hex = self.shuffle_sn()
                         return dump.data
         raise KeyError
 
@@ -154,8 +150,8 @@ class Ryujinx(BinUtils):
     def open_dump(self, dump):
         return super().open_dump(dump)
 
-    def shuffle_sn(self, data):
-        return super().shuffle_sn(data)
+    def shuffle_sn(self):
+        return super().shuffle_sn()
 
     def bin_to_json(self, data):
         basejson = {}
@@ -178,10 +174,7 @@ class Ryujinx(BinUtils):
 
     def json_to_bin(self, ryujinx_json):
         ryujinx_json = json.loads(ryujinx_json)
-        with open('assets/templates/template.bin', 'rb') as template:
-            dump = self.open_dump(template.read())
-        dump.data = self.shuffle_sn(dump.data)
-        dump.unlock()
+        dump = self.generate_bin()
         if 'Name' in ryujinx_json:
             dump.amiibo_nickname = ryujinx_json['Name']
         dump.data[84:92] = bytes.fromhex(ryujinx_json['AmiiboId'])
