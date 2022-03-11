@@ -2,3 +2,7 @@
 ssbu_amiibo.py
 *.pyc
 *.csv
+Lib/*
+Scripts/*
+pyvenv.cfg
+amiibo.json

@@ -179,8 +179,9 @@ class Ryujinx(BinUtils):
             dump.amiibo_nickname = ryujinx_json['Name']
         dump.data[84:92] = bytes.fromhex(ryujinx_json['AmiiboId'])
         dump.write_counter = ryujinx_json['WriteCounter']
-        dump.app_id = ryujinx_json['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
-        dump.app_area = b64decode(ryujinx_json['ApplicationAreas'][0]['ApplicationArea'])
+        if len(ryujinx_json['ApplicationAreas']) != 0:
+            dump.app_id = ryujinx_json['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
+            dump.app_area = b64decode(ryujinx_json['ApplicationAreas'][0]['ApplicationArea'])
         dump.lock()
         return dump.data
 

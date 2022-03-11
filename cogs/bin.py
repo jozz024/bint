@@ -27,8 +27,11 @@ class BinCog(commands.Cog):
     async def shuffle_sn(self, ctx: Context):
         shuffle = bin_modify_utils.BinUtils()
         try:
-            bin = shuffle.shuffle_sn(await ctx.message.attachments[0].read())
-            await ctx.send(file=File(io.BytesIO(bin), filename = ctx.message.attachments[0].filename))
+            dump = shuffle.open_dump(await ctx.message.attachments[0].read())
+            dump.unlock()
+            dump.uid_hex = shuffle.shuffle_sn()
+            dump.lock()
+            await ctx.send(file=File(io.BytesIO(dump.data), filename = ctx.message.attachments[0].filename))
         except IndexError:
             await ctx.send('Please attach a file.')
 
