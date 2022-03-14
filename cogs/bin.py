@@ -83,7 +83,21 @@ class BinCog(commands.Cog):
     async def bineval(self, ctx: Context):
         eval = bin_modify_utils.Evaluate()
         try:
-            await ctx.send(eval.bineval(await ctx.message.attachments[0].read()))
+            output = eval.bineval(await ctx.message.attachments[0].read())
+            if len(output) <= 2000:
+                await ctx.send(output)
+            else:
+                lines = output.splitlines()
+                line_num = 0
+                output = ""
+                for line in lines:
+                    output += line + "\n"
+                    line_num += 1
+
+                    if line_num == 24:
+                        await ctx.send(output + "```")
+                        output = "```"
+                await ctx.send(output)
         except IndexError:
             await ctx.send('Please attach a file.')
 

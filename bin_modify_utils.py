@@ -382,7 +382,7 @@ class Evaluate(BinUtils):
                 current_index += 1
 
             output += f"{sections}: {value/(2**section-1)*100}\n"
-        return f"```{output}```"
+        return f"```\n{output}```"
 
 class NFCTools(BinUtils):
     def __init__(self):
