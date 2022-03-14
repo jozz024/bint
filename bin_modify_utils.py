@@ -45,6 +45,11 @@ class BinUtils:
             raise InvalidAmiiboDump
 
     def shuffle_sn(self):
+        """Generates a shuffled serial number for the amiibo to use.
+
+        Returns:
+            str: A string of bytes separated by spaces.
+        """
         serial_number = "04"
         while len(serial_number) < 20:
             temp_sn = hex(random.randint(0, 255))
@@ -56,7 +61,16 @@ class BinUtils:
             serial_number += ' ' + temp_sn
         return serial_number
 
-    def rename(self, new_name, data):
+    def rename(self, new_name: str, data: bytes):
+        """Renames the given dump data.
+
+        Args:
+            new_name (str): The new name to give the amiibo.
+            data (bytes): The amiibo data.
+
+        Returns:
+            bytes: The renamed amiibo.
+        """
         dump = self.open_dump(data)
         dump.unlock()
         dump.amiibo_nickname = new_name
@@ -69,12 +83,40 @@ class Transplant(BinUtils):
         super().__init__()
 
     def open_dump(self, dump):
+        """Opens the given data in the AmiiboDump class.
+
+        Args:
+            dump (bytes): A bytes-like object.
+
+        Raises:
+            InvalidAmiiboDump: Raises InvalidAmiiboDump if it cannot load the data.
+
+        Returns:
+            AmiiboDump: Dump of the given data.
+        """
         return super().open_dump(dump)
 
     def shuffle_sn(self):
+        """Generates a shuffled serial number for the amiibo to use.
+
+        Returns:
+            str: A string of bytes separated by spaces.
+        """
         return super().shuffle_sn()
 
     def transplant(self, character_name, data):
+        """Gives the amiibo a character swap.
+
+        Args:
+            character_name (str): The character to swap to.
+            data (bytes): Bin data.
+
+        Raises:
+            KeyError: If it makes it that far it raises a keyerror.
+
+        Returns:
+            bytes: Bin data.
+        """
         character_json = open('assets/characters.json')
         characters = json.load(character_json)
         dump = self.open_dump(data)
@@ -100,9 +142,29 @@ class Spirits(BinUtils):
         super().__init__()
 
     def open_dump(self, dump):
+        """Opens the given data in the AmiiboDump class.
+
+        Args:
+            dump (bytes): A bytes-like object.
+
+        Raises:
+            InvalidAmiiboDump: Raises InvalidAmiiboDump if it cannot load the data.
+
+        Returns:
+            AmiiboDump: Dump of the given data.
+        """
         return super().open_dump(dump)
 
     def validate_skill(self, skill):
+        """Checks if the given skill is valid.
+
+        Args:
+            skill (str): Skill to check.
+
+        Returns:
+            int: skill id
+            str: skill name
+        """
         if skill in SPIRITSKILLTABLE:
             skill_id = SPIRITSKILLS[SPIRITSKILLTABLE[skill]]
             return skill_id, SPIRITSKILLTABLE[skill]
@@ -111,6 +173,21 @@ class Spirits(BinUtils):
         return skill_id, skill
 
     def validate_loadout(self, attack, defense, skill_1, skill_2, skill_3):
+        """Validates the given spirit loadout.
+
+        Args:
+            attack (int): Attack stat.
+            defense (int): Defense Stat.
+            skill_1 (str): First Spirit skill.
+            skill_2 (str): Second Spirit skill.
+            skill_3 (str): Third Spirit skill.
+
+        Raises:
+            IndexError: Raises an index error so it doesn't keep going with the spirit setting.
+
+        Returns:
+            None: Nothing
+        """
         maxstats = 5000
         slotsfilled = (
             SKILLSLOTS[skill_1.lower()]
@@ -129,6 +206,19 @@ class Spirits(BinUtils):
             raise IndexError
 
     def set_spirits(self, data, attack: int, defense: int, skill_1_name, skill_2_name, skill_3_name):
+        """Sets the spirits of the given bin dump.
+
+        Args:
+            data (bytes): Dump data.
+            attack (int): Attack stat.
+            defense (int): Defense Stat
+            skill_1_name (str): First Spirit skill.
+            skill_2_name (str): Second Spirit skill.
+            skill_3_name (str): Third Spirit skill.
+
+        Returns:
+            bytes: Dump data.
+        """
         skill_1, skill_1_name = self.validate_skill(skill_1_name)
         skill_2, skill_2_name = self.validate_skill(skill_2_name)
         skill_3, skill_3_name = self.validate_skill(skill_3_name)
@@ -148,10 +238,56 @@ class Ryujinx(BinUtils):
         super().__init__()
 
     def open_dump(self, dump):
+        """Opens the given data in the AmiiboDump class.
+
+        Args:
+            dump (bytes): A bytes-like object.
+
+        Raises:
+            InvalidAmiiboDump: Raises InvalidAmiiboDump if it cannot load the data.
+
+        Returns:
+            AmiiboDump: Dump of the given data.
+        """
         return super().open_dump(dump)
 
     def shuffle_sn(self):
+        """Generates a shuffled serial number for the amiibo to use.
+
+        Returns:
+            str: A string of bytes separated by spaces.
+        """
         return super().shuffle_sn()
+
+    def gen_random_bytes(self, byte_amt: int):
+        generated_bytes = ""
+        while len(generated_bytes) < byte_amt * 2:
+            temp_gen = hex(random.randint(0, 255))
+            temp_gen = temp_gen[2:]
+            if len(temp_gen) == 1:
+                temp_gen = '0' + temp_gen
+            generated_bytes += temp_gen
+        return generated_bytes
+
+    def generate_bin(self):
+        bin = bytes.fromhex('00' * 540)
+        dump = AmiiboDump(self.keys, bin, False)
+        dump.uid_hex = self.shuffle_sn()
+        dump.amiibo_nickname = 'AMIIBO'
+        dump.data[0x09:0x0C] = bytes.fromhex('480FE0')
+        dump.data[0x0C:0x10] = bytes.fromhex('F110FFEE')
+        dump.data[0x10] = 0xA5
+        dump.data[0x11:13] = bytes.fromhex(self.gen_random_bytes(2))
+        dump.data[0x14:0x16] = bytes.fromhex('3000')
+        dump.data[0x16:0x18] = bytes.fromhex(self.gen_random_bytes(2))
+        dump.data[0x1A:0x1C] = bytes.fromhex(self.gen_random_bytes(2))
+        dump.data[0xA0:0x100] = bytes.fromhex('03 00 00 40 EB A5 21 1A E1 FD C7 59 D0 5A A5 4D 44 0D 56 BD 21 CA 00 00 00 00 4D 00 69 00 69 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 40 40 00 00 21 01 02 68 44 18 26 34 46 14 81 12 17 68 0D 00 00 29 00 52 48 50 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 6C'.replace(' ', ''))
+        dump.data[0x100:0x108] = bytes.fromhex('01006A803016E000')
+        dump.data[0x108:0x10A] = bytes.fromhex(self.gen_random_bytes(2))
+        dump.data[0x208:0x20C] = bytes.fromhex('01000FBD')
+        dump.data[0x20c:0x214] = bytes.fromhex('000000045F000000')
+        dump.data = dump.data[:-2]
+        return dump
 
     def bin_to_json(self, data):
         basejson = {}
@@ -190,6 +326,17 @@ class Evaluate(BinUtils):
         super().__init__()
 
     def open_dump(self, dump):
+        """Opens the given data in the AmiiboDump class.
+
+        Args:
+            dump (bytes): A bytes-like object.
+
+        Raises:
+            InvalidAmiiboDump: Raises InvalidAmiiboDump if it cannot load the data.
+
+        Returns:
+            AmiiboDump: Dump of the given data.
+        """
         return super().open_dump(dump)
 
     def getBits(self, number, bit_index, number_of_bits):
@@ -242,6 +389,17 @@ class NFCTools(BinUtils):
         super().__init__()
 
     def open_dump(self, dump):
+        """Opens the given data in the AmiiboDump class.
+
+        Args:
+            dump (bytes): A bytes-like object.
+
+        Raises:
+            InvalidAmiiboDump: Raises InvalidAmiiboDump if it cannot load the data.
+
+        Returns:
+            AmiiboDump: Dump of the given data.
+        """
         return super().open_dump(dump)
 
     def txt_to_bin(self, txt):
