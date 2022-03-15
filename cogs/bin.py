@@ -111,6 +111,16 @@ class BinCog(commands.Cog):
         except IndexError:
             await ctx.send('Please attach a file.')
 
+    @commands.dm_only()
+    @commands.command(name = "personalitycalc")
+    async def calc_personality(self, ctx: Context):
+        personality = bin_modify_utils.Personality()
+        try:
+            recieved_personality = personality.calculate_personality_from_data(await ctx.message.attachments[0].read())
+            await ctx.send(f"The amiibo's personality is {recieved_personality}.")
+        except IndexError:
+            await ctx.send('Please attach a file.')
+
 def setup(bot):
     bot.add_cog(BinCog(bot))
 

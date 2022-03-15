@@ -3,11 +3,12 @@ import random
 import re
 from base64 import b64decode, b64encode
 from datetime import datetime
+from bitstring import BitString
 
 from amiibo import AmiiboMasterKey
 
 from dicts import (SECTIONS, SKILLSLOTS, SPIRITSKILLS, SPIRITSKILLTABLE,
-                   TRANSLATION_TABLE_CHARACTER_TRANSPLANT)
+                   TRANSLATION_TABLE_CHARACTER_TRANSPLANT, param_defs, personality_names)
 from ssbu_amiibo import InvalidAmiiboDump
 from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
 
@@ -416,6 +417,112 @@ class NFCTools(BinUtils):
         bin = bytes.fromhex(hex)
 
         return bin
+
+# Thanks to @xSke for providing the personality calculation code.
+class Personality(BinUtils):
+    def __init__(self):
+        with open("assets/personality_data.json", "r") as fp:
+            self.groups_data = json.load(fp)
+        super().__init__()
+
+    def open_dump(self, dump):
+        return super().open_dump(dump)
+
+    def decode_behavior_params(self, dump: AmiiboDump):
+        params = {}
+
+        # This data gets a lot simpler to read if you treat it as a bitstream
+        # and then read it "in reverse" (flip the bytes, then read bits back to front = no byte swap issues)
+        behavior_data = dump.data[0x1BC:0x1F6]
+
+        bits = BitString(behavior_data[::-1])
+        for name, size in param_defs[::-1]:
+            val = bits.read("uint:{}".format(size))
+
+            # even the game internals work with "out of 100" values so we'll keep doing that here
+            val_max = (1 << size) - 1
+            params[name] = val / val_max * 100
+        return params
+
+
+    def scale_value(self, param, value, flip):
+        # the original code actually defines a default of 0 for "appeal", and then divides by it
+        # on ARM this just results in 0, anywhere else it'll blow up ;)
+        if param == "appeal":
+            return 0
+
+        # some of the "directional weight" parameters have different defaults defined in the code but none of them are ever used here so lol
+        default = 50
+        if flip:
+            scaled = (default - value) / default
+        else:
+            scaled = (value - default) / default
+
+        # since we rescale to range from -1.0 to 1.0, this means values below halfway are meaningless lol
+        return max(0, min(1, scaled))
+
+
+    def calculate_group_score(self, params, group):
+        score = 0
+        for param_data in group["scores"]:
+            name = param_data["param"]
+            value = self.scale_value(name, params[name], param_data["flip"])
+
+            if value >= param_data["min_1"]:
+                score += param_data["point_1"]
+            if value >= param_data["min_2"]:
+                score += param_data["point_2"]
+
+        return score
+
+
+    def meets_group_necessary_requirements(self, params, group):
+        name = group["necessary_param"]
+        if not name:
+            return True
+
+        value = self.scale_value(name, params[name], group["necessary_flip"])
+        return value >= group["necessary_min"]
+
+
+    def get_personality_tier(self, group, score):
+        winner = 0  # default is Normal
+        for tier in group["tiers"]:
+            if score >= tier["points"]:
+                winner = tier["personality"]
+        return winner
+
+
+    def calculate_personality(self, params):
+        group_scores = []
+
+        for group_id, group_data in self.groups_data.items():
+            if not self.meets_group_necessary_requirements(params, group_data):
+                continue
+
+            score = self.calculate_group_score(params, group_data)
+
+            # using numeric index as a tiebreaker here
+            key = (score, group_data["index"])
+            group_scores.append((key, group_data))
+
+            print("{}: {} pts".format(group_id, score))
+
+        if not group_scores:
+            # if no groups are eligible, we're Normal
+            return 0
+
+        # find the best group!
+        (winner_score, _), winner_group = max(group_scores)
+        return self.get_personality_tier(winner_group, winner_score)
+
+    def calculate_personality_from_data(self, data):
+        dump = self.open_dump(data)
+        dump.unlock()
+
+        params = self.decode_behavior_params(dump)
+        personality = self.calculate_personality(params)
+        return personality_names[personality]
 
 # binutils = NFCTools()
 #
