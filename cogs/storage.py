@@ -63,7 +63,6 @@ class StorageCog(commands.Cog):
         vb = File(io.BytesIO(bytes.fromhex(amiibo['users'][str(ctx.author.id)]['amiibo'][name][0])), name + '.bin')
         await ctx.send(file=vb)
 
-    @commands.dm_only()
     @commands.command()
     async def send(self, ctx: Context, user: Member, name: str):
         with open('amiibo.json', "r") as _json:
