@@ -35,11 +35,14 @@ class BinUtils:
             dump = AmiiboDump(self.keys, bin_dump)
             return dump
         elif 532 <= len(bin_dump) <= 572:
-            while len(bin_dump) < 540:
-                bin_dump += b'\x00'
+            if len(bin_dump) < 540:
+                while len(bin_dump) < 540:
+                    bin_dump += b'\x00'
+                dump = AmiiboDump(self.keys, bin_dump)
+                return dump
             if len(bin_dump) > 540:
                 bin_dump = bin_dump[:-(len(bin_dump) - 540)]
-                dump = AmiiboDump(self.master_keys, bin_dump)
+                dump = AmiiboDump(self.keys, bin_dump)
                 return dump
 
         else:
