@@ -520,10 +520,12 @@ class Personality(BinUtils):
     def calculate_personality_from_data(self, data):
         dump = self.open_dump(data)
         dump.unlock()
-
-        params = self.decode_behavior_params(dump)
-        personality = self.calculate_personality(params)
-        return personality_names[personality]
+        if dump.data[0x1BC:0x1F6] != bytes.fromhex("00" * 0x3a):
+            params = self.decode_behavior_params(dump)
+            personality = self.calculate_personality(params)
+            return personality_names[personality]
+        else:
+            return "Normal"
 
 # binutils = NFCTools()
 #
