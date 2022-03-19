@@ -452,7 +452,7 @@ class Personality(BinUtils):
         # the original code actually defines a default of 0 for "appeal", and then divides by it
         # on ARM this just results in 0, anywhere else it'll blow up ;)
         if param == "appeal":
-            return 0
+            return 1
 
         # some of the "directional weight" parameters have different defaults defined in the code but none of them are ever used here so lol
         default = 50
@@ -508,8 +508,6 @@ class Personality(BinUtils):
             # using numeric index as a tiebreaker here
             key = (score, group_data["index"])
             group_scores.append((key, group_data))
-
-            print("{}: {} pts".format(group_id, score))
 
         if not group_scores:
             # if no groups are eligible, we're Normal
