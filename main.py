@@ -1,13 +1,9 @@
 import nextcord
-import asyncio
 from nextcord.ext import commands
-import re
-from nextcord import File
-from dictionaries import *
 import os
 
-token = os.environ["token"]
-bot = commands.Bot(command_prefix="!", description="deez")
+token = os.environ["leaderbot.canary"]
+bot = commands.Bot(command_prefix="!", description="Discord bot for handling amiibo .bin files.")
 
 
 @bot.event
@@ -20,15 +16,9 @@ async def on_ready():
     await bot.change_presence(
         status=nextcord.Status.idle,
         activity=nextcord.Activity(
-            name="amiibots", type=nextcord.ActivityType.listening
+            name="amiibo .bin handler.", type=nextcord.ActivityType.watching
         ),
     )
-
-
-@bot.command(name="end")
-async def end(ctx):
-    exit()
-
 
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
@@ -38,5 +28,4 @@ for filename in os.listdir("./cogs"):
         if os.path.isfile(filename):
             print(f"Unable to load {filename[:-3]}")
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(bot.start(token))
+bot.run(token)

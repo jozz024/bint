@@ -1,9 +1,8 @@
-
 *.bin
-*.jpg
 ssbu_amiibo.py
 *.pyc
-owo.py
 *.csv
-slashtest.py
-*.json
+Lib/*
+Scripts/*
+pyvenv.cfg
+amiibo.json

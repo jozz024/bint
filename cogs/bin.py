@@ -1,157 +1,126 @@
 import io
-import re
 
-from amiibo import AmiiboMasterKey
-from amiibo_functions import BinManager
-from character_dictionary import CharacterDictionary
-from dictionaries import TRANSLATION_TABLE_CHARACTER_TRANSPLANT
+import bin_modify_utils
+import nextcord
 from nextcord import File
 from nextcord.ext import commands
 from nextcord.ext.commands import Context
-from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
 
-default_assets_location = r"Brain_Transplant_Assets"
-characters_location = r"Brain_Transplant_Assets/characters.xml"
-char_dict = CharacterDictionary(characters_location)
-binmanager = BinManager(char_dict)
-class binCog(commands.Cog):
 
-    @commands.command(name="bineval")
-    async def bineval(self, ctx: Context):
-        await ctx.send(binmanager.bineval(await ctx.message.attachments[0].read()))
+class BinCog(commands.Cog):
 
-    @commands.command(name="ryu2bin")
-    async def ryu2bin(self, ctx: Context):
-      v = binmanager.ryu2bin(ryudata = await ctx.message.attachments[0].read())
-      vb = File(io.BytesIO(v), filename = str(ctx.message.attachments[0].filename).replace('.json', '.bin'))
-      await ctx.send(file=vb)
-
-    @commands.command(name="bin2ryu")
-    async def bin2ryu(self, ctx):
-      v = binmanager.bin2ryu(dump_ = await ctx.message.attachments[0].read())
-      vb = File(io.BytesIO(v.encode('utf-8')), filename = str(ctx.message.attachments[0].filename).replace('.bin', '.json'))
-      await ctx.send(file=vb)
-
-    @commands.command(name="convert")
     @commands.dm_only()
-    async def convert_nfc_tools_file_to_bin(self, ctx):
-        vb = []
-        for files in ctx.message.attachments:
-          export_string_lines = None
-          hex = ""
-          file = await files.read()
-          file = str(file, 'utf-8')
-          print(file)
-          export_string_lines = file.splitlines()
-
-          for line in export_string_lines:
-            match = re.search(r"(?:[A-Fa-f0-9]{2}:){3}[A-Fa-f0-9]{2}", line)
-            if match:
-              hex = hex + match.group(0).replace(":", "")
-
-          bin = bytes.fromhex(hex)
-          print(len(bin))
-          if len(bin) == 540:
-            vb.append(File(io.BytesIO(bin), str(files.filename).strip('.txt') + ".bin"))
-            
-          else:
-            await ctx.send("Invalid text file.")
-        if len(vb) == 0:
-          return
-        else:
-          await ctx.send(
-              files=vb
-            )
-
-    @commands.command(name="transplant")
-    @commands.dm_only()
-    async def brain_transplant(self, ctx: Context, *, character):
+    @commands.command(name = 'transplant')
+    async def transplant(self, ctx: Context, *, character):
+        transplant = bin_modify_utils.Transplant()
         try:
-            character = character
-            v = binmanager.transplant(
-                  character=character.title(),
-                  randomize_SN=True,
-                  dump = await ctx.message.attachments[0].read()
-                )
-            vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
-            await ctx.send(file=vb)
-        except KeyError:
             try:
-                character = TRANSLATION_TABLE_CHARACTER_TRANSPLANT[
-                    character.replace(" ", "")
-                ]
-                v = binmanager.transplant(
-                  character=character.title(),
-                  randomize_SN=True,
-                  dump = await ctx.message.attachments[0].read()
-                )
-                vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
-                await ctx.send(file=vb)
-            except KeyError:
-                await ctx.send(f"'{character}' is an invalid character.")
+                bin = transplant.transplant(character, await ctx.message.attachments[0].read())
+            except IndexError:
+                await ctx.send('Please attach a file.')
+            await ctx.send(file=File(io.BytesIO(bin), filename = ctx.message.attachments[0].filename))
+        except KeyError:
+            await ctx.send('Invalid Character Name.')
 
-    @commands.command(name="shufflesn")
     @commands.dm_only()
-    async def shufflenfpsn(self, ctx):
-        vb = []
-        for files in ctx.message.attachments:
-          v = binmanager.randomize_sn(dump_=await files.read())
-          vb.append(File(io.BytesIO(v.data), filename = files.filename))
-        await ctx.send(files=vb)
-
-    @commands.command(name="setspirits")
-    @commands.dm_only()
-    async def spiritedit(
-        self, ctx, attack, defense, ability1="none", ability2="none", ability3="none"
-    ):
-        print(ability1)
-        print(ability2)
-        print(ability3)
+    @commands.command(name='shufflesn')
+    async def shuffle_sn(self, ctx: Context):
+        shuffle = bin_modify_utils.BinUtils()
         try:
-            v = binmanager.setspirits(
-                attack,
-                defense,
-                ability1,
-                ability2,
-                ability3,
-                dump = await ctx.message.attachments[0].read()
-            )
-            vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
-            await ctx.send(
-                f"{attack}, {defense}",
-                file=vb,
-            )
+            dump = shuffle.open_dump(await ctx.message.attachments[0].read())
+            dump.unlock()
+            dump.uid_hex = shuffle.shuffle_sn()
+            dump.lock()
+            await ctx.send(file=File(io.BytesIO(dump.data), filename = ctx.message.attachments[0].filename))
         except IndexError:
-            await ctx.send("Illegal Setup")
+            await ctx.send('Please attach a file.')
 
-    @commands.command(name="rename")
     @commands.dm_only()
-    async def rename(self, ctx, *, newamiiboname):
+    @commands.command(name='rename')
+    async def rename(self, ctx: Context, new_name):
+        rename = bin_modify_utils.BinUtils()
+        try:
+            bin = rename.rename(new_name, await ctx.message.attachments[0].read())
+            await ctx.send(file=File(io.BytesIO(bin), filename = ctx.message.attachments[0].filename))
+        except IndexError:
+            await ctx.send('Please attach a file.')
 
-        with open(r"/".join([default_assets_location, "key_retail.bin"]), "rb") as fp_j:
-            master_keys = AmiiboMasterKey.from_combined_bin(fp_j.read())
-        dump = AmiiboDump(master_keys, await ctx.message.attachments[0].read())
-        dump.unlock()
-        dump.amiibo_nickname = newamiiboname
-        dump.lock()
-        vb = File(io.BytesIO(dump.data), filename = ctx.message.attachments[0].filename)
+    @commands.dm_only()
+    @commands.command(name = 'setspirits')
+    async def setspirits(self, ctx: Context, attack: int, defense: int, skill_1 = 'none', skill_2 = 'none', skill_3 = 'none'):
+        setspirits = bin_modify_utils.Spirits()
+        try:
+            try:
+                bin = setspirits.set_spirits(await ctx.message.attachments[0].read(), attack, defense, skill_1, skill_2, skill_3)
+            except KeyError:
+                await ctx.send('Invalid Spirit Skills.')
+            await ctx.send(file=File(io.BytesIO(bin), filename = ctx.message.attachments[0].filename))
+        except IndexError:
+            await ctx.send('Please attach a file.')
 
-        await ctx.send(file=vb)
+    @commands.dm_only()
+    @commands.command(nane = 'bin2ryu')
+    async def bin2ryu(self, ctx: Context):
+        ryujinx = bin_modify_utils.Ryujinx()
+        try:
+            bin = ryujinx.bin_to_json(await ctx.message.attachments[0].read())
+            await ctx.send(file=File(io.BytesIO(bin.encode('utf-8')), filename = ctx.message.attachments[0].filename.replace('.bin', '.json')))
+        except IndexError:
+            await ctx.send('Please attach a file.')
 
-    @commands.command(name="decrypt")
-    @commands.is_owner()
-    async def decrypt(self, ctx):
-        v = binmanager.decrypt(await ctx.message.attachments[0].read())
-        vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
-        await ctx.send(file=vb)
+    @commands.dm_only()
+    @commands.command(nane = 'ryu2bin')
+    async def ryu2bin(self, ctx: Context):
+        ryujinx = bin_modify_utils.Ryujinx()
+        try:
+            bin = ryujinx.json_to_bin(await ctx.message.attachments[0].read())
+            await ctx.send(file=File(io.BytesIO(bin), filename = ctx.message.attachments[0].filename.replace('.json', '.bin')))
+        except IndexError:
+            await ctx.send('Please attach a file.')
 
-    @commands.command(name="binedit")
-    @commands.is_owner()
-    async def binedit(self, ctx, offset, bit_index, number_of_bits, value):
-        v = binmanager.personalityedit(await ctx.message.attachments[0].read(), offset, bit_index, number_of_bits, value)
-        vb = File(io.BytesIO(v), filename = ctx.message.attachments[0].filename)
-        await ctx.send(file=vb)
+    @commands.dm_only()
+    @commands.command(name='bineval')
+    async def bineval(self, ctx: Context):
+        eval = bin_modify_utils.Evaluate()
+        try:
+            output = eval.bineval(await ctx.message.attachments[0].read())
+            if len(output) <= 2000:
+                await ctx.send(output)
+            else:
+                lines = output.splitlines()
+                line_num = 0
+                output = ""
+                for line in lines:
+                    output += line + "\n"
+                    line_num += 1
 
+                    if line_num == 24:
+                        await ctx.send(output + "```")
+                        output = "```"
+                await ctx.send(output)
+        except IndexError:
+            await ctx.send('Please attach a file.')
+
+    @commands.dm_only()
+    @commands.command(name = 'convert')
+    async def convert(self, ctx: Context):
+        nfctools = bin_modify_utils.NFCTools()
+        try:
+            bin = nfctools.txt_to_bin(await ctx.message.attachments[0].read())
+            await ctx.send(file=File(io.BytesIO(bin), filename = ctx.message.attachments[0].filename.replace('.txt', '.bin')))
+        except IndexError:
+            await ctx.send('Please attach a file.')
+
+    @commands.dm_only()
+    @commands.command(name = "personalitycalc")
+    async def calc_personality(self, ctx: Context):
+        personality = bin_modify_utils.Personality()
+        try:
+            recieved_personality = personality.calculate_personality_from_data(await ctx.message.attachments[0].read())
+            await ctx.send(f"The amiibo's personality is {recieved_personality}.")
+        except IndexError:
+            await ctx.send('Please attach a file.')
 
 def setup(bot):
-    bot.add_cog(binCog(bot))
+    bot.add_cog(BinCog(bot))
+
