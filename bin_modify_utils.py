@@ -129,14 +129,14 @@ class Transplant(BinUtils):
             for name, namelist in character.items():
                 if character_name.title() == name:
                     dump.data[84:92] = bytes.fromhex(namelist[0])
+                    dump.uid_hex = self.shuffle_sn()
                     dump.lock()
-                    dump.data = self.shuffle_sn(dump.data)
                     return dump.data
                 elif character_name.lower().replace(' ', '') in TRANSLATION_TABLE_CHARACTER_TRANSPLANT:
                     if TRANSLATION_TABLE_CHARACTER_TRANSPLANT[character_name.lower().replace(' ', '')].title() == name:
                         dump.data[84:92] = bytes.fromhex(namelist[0])
-                        dump.lock()
                         dump.uid_hex = self.shuffle_sn()
+                        dump.lock()
                         return dump.data
         raise KeyError
 
