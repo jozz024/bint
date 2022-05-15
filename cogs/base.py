@@ -7,6 +7,7 @@ import asyncio
 import traceback
 
 class BaseCog(commands.Cog):
+    # none of this code is mine, suck it
     def __init__(self, bot):
         self.bot = bot
         self.bot.async_call_shell = self.async_call_shell

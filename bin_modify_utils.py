@@ -12,6 +12,8 @@ from dicts import (SECTIONS, SKILLSLOTS, SPIRITSKILLS, SPIRITSKILLTABLE,
 from ssbu_amiibo import InvalidAmiiboDump
 from ssbu_amiibo import SsbuAmiiboDump as AmiiboDump
 
+# Got yelled at for having all of these classes inheret from binutils but idrc
+# it makes the code cleaner imo
 
 class BinUtils:
     def __init__(self):
@@ -31,16 +33,20 @@ class BinUtils:
             AmiiboDump: Dump of the given data.
         """
         bin_dump = dump
+        # If the bin has a length of 540, pass it right into the amiibodump class
         if len(bin_dump) == 540:
             dump = AmiiboDump(self.keys, bin_dump)
             return dump
+        # If the bin is larger/smaller than 540, resize it to be 540
         elif 532 <= len(bin_dump) <= 572:
             if len(bin_dump) < 540:
+                # add a byte to the bin until it hits 540
                 while len(bin_dump) < 540:
                     bin_dump += b'\x00'
                 dump = AmiiboDump(self.keys, bin_dump)
                 return dump
             if len(bin_dump) > 540:
+                # shave the ending bytes off of the bin
                 bin_dump = bin_dump[:-(len(bin_dump) - 540)]
                 dump = AmiiboDump(self.keys, bin_dump)
                 return dump
@@ -77,6 +83,7 @@ class BinUtils:
         """
         dump = self.open_dump(data)
         dump.unlock()
+        # set the amiibo nickname to the given name
         dump.amiibo_nickname = new_name
         dump.lock()
         return dump.data
@@ -121,23 +128,26 @@ class Transplant(BinUtils):
         Returns:
             bytes: Bin data.
         """
+        # open the json containing all of the transplantable characters
         character_json = open('assets/characters.json')
         characters = json.load(character_json)
         dump = self.open_dump(data)
         dump.unlock()
         for character in characters['characters']:
-            for name, namelist in character.items():
-                if character_name.title() == name:
-                    dump.data[84:92] = bytes.fromhex(namelist[0])
-                    dump.uid_hex = self.shuffle_sn()
-                    dump.lock()
-                    return dump.data
-                elif character_name.lower().replace(' ', '') in TRANSLATION_TABLE_CHARACTER_TRANSPLANT:
-                    if TRANSLATION_TABLE_CHARACTER_TRANSPLANT[character_name.lower().replace(' ', '')].title() == name:
-                        dump.data[84:92] = bytes.fromhex(namelist[0])
-                        dump.uid_hex = self.shuffle_sn()
-                        dump.lock()
-                        return dump.data
+            # check if the given character nane is the same as the name
+            if character_name.title() == character["name"]:
+                dump.data[84:92] = bytes.fromhex(character["id"]) # mide said this didnt work for him, i think it was a skill issue
+                # shuffles the serial number when you transplant
+                dump.uid_hex = self.shuffle_sn()
+                dump.lock()
+                return dump.data
+            # check translation table in case they didnt use the real name
+            elif TRANSLATION_TABLE_CHARACTER_TRANSPLANT[character_name.lower().replace(' ', '')].title() == character["name"]:
+                # refer to above for what this stuff is doing
+                dump.data[84:92] = bytes.fromhex(character["id"])
+                dump.uid_hex = self.shuffle_sn()
+                dump.lock()
+                return dump.data
         raise KeyError
 
 
@@ -169,12 +179,16 @@ class Spirits(BinUtils):
             int: skill id
             str: skill name
         """
+        # check if they used a different wording for the skill's name
         if skill in SPIRITSKILLTABLE:
+            # get the skill id from the skill name
             skill_id = SPIRITSKILLS[SPIRITSKILLTABLE[skill]]
+            # return the skill id and the skill name
             return skill_id, SPIRITSKILLTABLE[skill]
         else:
             skill_id = SPIRITSKILLS[skill]
         return skill_id, skill
+        # NOTE: We return skill id and skill name because of the translation
 
     def validate_loadout(self, attack, defense, skill_1, skill_2, skill_3):
         """Validates the given spirit loadout.
@@ -192,18 +206,24 @@ class Spirits(BinUtils):
         Returns:
             None: Nothing
         """
+        # set the max attack + defense to be 5000
         maxstats = 5000
+        # storing the amount of slots filled
         slotsfilled = (
             SKILLSLOTS[skill_1.lower()]
             + SKILLSLOTS[skill_2.lower()]
             + SKILLSLOTS[skill_3.lower()]
         )
+        # if only one slot is filled, only subtract 300 from the maximum stat count
         if slotsfilled == 1:
             maxstats = maxstats - 300
+        # if two slots are filled, subtract 500 from the maximum stat count
         if slotsfilled == 2:
             maxstats = maxstats - 500
+        # if two slots are filled, subtract 500 from the maximum stat count
         if slotsfilled == 3:
             maxstats = maxstats - 800
+        # return nothing if the stats are okay
         if attack + defense <= maxstats:
             return None
         else:
@@ -223,12 +243,18 @@ class Spirits(BinUtils):
         Returns:
             bytes: Dump data.
         """
+        # get the skill ids and names from the name
         skill_1, skill_1_name = self.validate_skill(skill_1_name)
         skill_2, skill_2_name = self.validate_skill(skill_2_name)
         skill_3, skill_3_name = self.validate_skill(skill_3_name)
+
         dump = AmiiboDump(self.keys, data)
         dump.unlock()
+
+        # validate the entire loadout, will error out if it isnt correct
         self.validate_loadout(attack, defense, skill_1_name, skill_2_name, skill_3_name)
+
+        # set all of the skills and stats
         dump.data[0x1A4:0x1A6] = attack.to_bytes(2, "little")
         dump.data[0x1A6:0x1A8] = defense.to_bytes(2, "little")
         dump.data[0x140:0x141] = skill_1.to_bytes(1, "little")
@@ -274,36 +300,60 @@ class Ryujinx(BinUtils):
         return generated_bytes
 
     def generate_bin(self):
+        # start off with a fully 0'd out 540 byte block
         bin = bytes.fromhex('00' * 540)
+        # initialize the dump, and set is_locked to false so it doesn't verify anything yet
         dump = AmiiboDump(self.keys, bin, False)
         dump.uid_hex = self.shuffle_sn()
-        dump.amiibo_nickname = 'AMIIBO'
+        dump.amiibo_nickname = 'Ryujinx'
+        # internal + static lock
         dump.data[0x09:0x0C] = bytes.fromhex('480FE0')
+        # CC
         dump.data[0x0C:0x10] = bytes.fromhex('F110FFEE')
+        # 0xA5 lol
         dump.data[0x10] = 0xA5
+        # write counter
         dump.data[0x11:13] = bytes.fromhex(self.gen_random_bytes(2))
+        # settings
         dump.data[0x14:0x16] = bytes.fromhex('3000')
+        # crc counter
         dump.data[0x16:0x18] = bytes.fromhex(self.gen_random_bytes(2))
+        # last write date
         dump.data[0x1A:0x1C] = bytes.fromhex(self.gen_random_bytes(2))
+        # owner mii
         dump.data[0xA0:0x100] = bytes.fromhex('03 00 00 40 EB A5 21 1A E1 FD C7 59 D0 5A A5 4D 44 0D 56 BD 21 CA 00 00 00 00 4D 00 69 00 69 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 40 40 00 00 21 01 02 68 44 18 26 34 46 14 81 12 17 68 0D 00 00 29 00 52 48 50 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 14 6C'.replace(' ', ''))
+        # application titleid
         dump.data[0x100:0x108] = bytes.fromhex('01006A803016E000')
+        # 2nd write counter
         dump.data[0x108:0x10A] = bytes.fromhex(self.gen_random_bytes(2))
+        # dynamic lock + rfui
         dump.data[0x208:0x20C] = bytes.fromhex('01000FBD')
+        # cfg0 + cfg1
         dump.data[0x20c:0x214] = bytes.fromhex('000000045F000000')
+        # 2 extra bytes get added somewhere, i cant figure out where so i just remove them for now
         dump.data = dump.data[:-2]
         return dump
 
     def bin_to_json(self, data):
+        # initialize a dict to hold all of the data
         basejson = {}
         dump = self.open_dump(data)
         dump.unlock()
+        # fileversion is always 0
         basejson['FileVersion'] = 0
+        # amiibo name
         basejson['Name'] = dump.amiibo_nickname
+        # uuid
         basejson['TagUuid'] = b64encode(dump.data[0x0:0x08]).decode('ASCII')
+        # ID of the amiibo
         basejson['AmiiboId'] = dump.data[84:92].hex()
+        # first write date
         basejson['FirstWriteDate'] = datetime.now().isoformat()
+        # last write date
         basejson['LastWriteDate'] = datetime.now().isoformat()
+        # write counter
         basejson['WriteCounter'] = dump.write_counter
+        # applicationarea + app id
         basejson['ApplicationAreas'] = [
             {
                 "ApplicationAreaId": int(dump.app_id.hex(), 16),
@@ -313,12 +363,18 @@ class Ryujinx(BinUtils):
         return json.dumps(basejson, indent=4)
 
     def json_to_bin(self, ryujinx_json):
+        # loads the given json data
         ryujinx_json = json.loads(ryujinx_json)
+        # generate a bin
         dump = self.generate_bin()
+        # write the name to the bin if it exists
         if 'Name' in ryujinx_json:
             dump.amiibo_nickname = ryujinx_json['Name']
+        # write the character to the bin
         dump.data[84:92] = bytes.fromhex(ryujinx_json['AmiiboId'])
+        # write counter
         dump.write_counter = ryujinx_json['WriteCounter']
+        # write apparea stuff
         if len(ryujinx_json['ApplicationAreas']) != 0:
             dump.app_id = ryujinx_json['ApplicationAreas'][0]['ApplicationAreaId'].to_bytes(4, 'big')
             dump.app_area = b64decode(ryujinx_json['ApplicationAreas'][0]['ApplicationArea'])
@@ -452,7 +508,8 @@ class Personality(BinUtils):
         # the original code actually defines a default of 0 for "appeal", and then divides by it
         # on ARM this just results in 0, anywhere else it'll blow up ;)
         if param == "appeal":
-            return 1
+            # not the fix, but produces more accurate results
+            return 0.25
 
         # some of the "directional weight" parameters have different defaults defined in the code but none of them are ever used here so lol
         default = 50
@@ -520,16 +577,11 @@ class Personality(BinUtils):
     def calculate_personality_from_data(self, data):
         dump = self.open_dump(data)
         dump.unlock()
+        # check if training data is not null
         if dump.data[0x1BC:0x1F6] != bytes.fromhex("00" * 0x3a):
             params = self.decode_behavior_params(dump)
             personality = self.calculate_personality(params)
             return personality_names[personality]
+        # if it is, return normal
         else:
             return "Normal"
-
-# binutils = NFCTools()
-#
-# with open('test.txt', 'rb') as test:
-#     bin = binutils.txt_to_bin(test.read())
-# with open('test2.bin', 'wb') as test:
-#     test.write(bin)

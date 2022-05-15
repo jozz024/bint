@@ -1,668 +1,340 @@
 {
     "characters": [
         {
-            "Mario": [
-                "0000000000000002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Peach": [
-                "0002000000010002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Yoshi": [
-                "0003000000020002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Donkey Kong": [
-                "0008000000030002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Link": [
-                "0100000000040002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Fox": [
-                "0580000000050002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Samus": [
-                "05C0000000060002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Wii Fit Trainer": [
-                "0700000000070002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Villager": [
-                "0180000000080002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Pikachu": [
-                "1919000000090002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Kirby": [
-                "1F000000000A0002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Marth": [
-                "21000000000B0002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Zelda": [
-                "01010000000E0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mario",
+            "id": "0000000000000002"
         },
         {
-            "Diddy Kong": [
-                "00090000000D0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Peach",
+            "id": "0002000000010002"
         },
         {
-            "Luigi": [
-                "00010000000C0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Yoshi",
+            "id": "0003000000020002"
         },
         {
-            "Little Mac": [
-                "06C00000000F0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Donkey Kong",
+            "id": "0008000000030002"
         },
         {
-            "Pit": [
-                "0740000000100002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Link",
+            "id": "0100000000040002"
         },
         {
-            "Captain Falcon": [
-                "0600000000120002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Fox",
+            "id": "0580000000050002"
         },
         {
-            "Rosalina & Luma": [
-                "0004010000130002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Samus",
+            "id": "05C0000000060002"
         },
         {
-            "Bowser": [
-                "0005000000140002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Wii Fit Trainer",
+            "id": "0700000000070002"
         },
         {
-            "Lucario": [
-                "1AC0000000110002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Villager",
+            "id": "0180000000080002"
         },
         {
-            "Toon Link": [
-                "0100010000160002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Pikachu",
+            "id": "1919000000090002"
         },
         {
-            "Sheik": [
-                "0101010000170002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Kirby",
+            "id": "1F000000000A0002"
         },
         {
-            "Ike": [
-                "2101000000180002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Marth",
+            "id": "21000000000B0002"
         },
         {
-            "Shulk": [
-                "22400000002B0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Zelda",
+            "id": "01010000000E0002"
         },
         {
-            "Sonic": [
-                "3200000000300002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Diddy Kong",
+            "id": "00090000000D0002"
         },
         {
-            "Mega Man": [
-                "3480000000310002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Luigi",
+            "id": "00010000000C0002"
         },
         {
-            "King Dedede": [
-                "1F02000000280002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Little Mac",
+            "id": "06C00000000F0002"
         },
         {
-            "Meta Knight": [
-                "1F01000000270002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Pit",
+            "id": "0740000000100002"
         },
         {
-            "Robin": [
-                "21030000002A0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Captain Falcon",
+            "id": "0600000000120002"
         },
         {
-            "Lucina": [
-                "2102000000290002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Rosalina & Luma",
+            "id": "0004010000130002"
         },
         {
-            "Wario": [
-                "00070000001A0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Bowser",
+            "id": "0005000000140002"
         },
         {
-            "Charizard": [
-                "1906000000240002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Lucario",
+            "id": "1AC0000000110002"
         },
         {
-            "Ness": [
-                "22800000002C0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Toon Link",
+            "id": "0100010000160002"
         },
         {
-            "Pac-Man": [
-                "3340000000320002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Sheik",
+            "id": "0101010000170002"
         },
         {
-            "Greninja": [
-                "1B92000000250002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Ike",
+            "id": "2101000000180002"
         },
         {
-            "Jigglypuff": [
-                "1927000000260002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Shulk",
+            "id": "22400000002B0002"
         },
         {
-            "Palutena": [
-                "07420000001F0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Sonic",
+            "id": "3200000000300002"
         },
         {
-            "Dark Pit": [
-                "0741000000200002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mega Man",
+            "id": "3480000000310002"
         },
         {
-            "Zero Suit Samus": [
-                "05C00100001D0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "King Dedede",
+            "id": "1F02000000280002"
         },
         {
-            "Ganondorf": [
-                "01020100001B0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Meta Knight",
+            "id": "1F01000000270002"
         },
         {
-            "Dr Mario": [
-                "0000010000190002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Robin",
+            "id": "21030000002A0002"
         },
         {
-            "Bowser Jr": [
-                "0006000000150002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Lucina",
+            "id": "2102000000290002"
         },
         {
-            "Olimar": [
-                "06400100001E0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Wario",
+            "id": "00070000001A0002"
         },
         {
-            "Mr Game & Watch": [
-                "07800000002D0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Charizard",
+            "id": "1906000000240002"
         },
         {
-            "ROB": [
-                "0781000000330002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Ness",
+            "id": "22800000002C0002"
         },
         {
-            "Duck Hunt": [
-                "07820000002F0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Pac-Man",
+            "id": "3340000000320002"
         },
         {
-            "Mii Brawler": [
-                "07C0000000210002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Greninja",
+            "id": "1B92000000250002"
         },
         {
-            "Mii Swordfighter": [
-                "07C0010000220002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Jigglypuff",
+            "id": "1927000000260002"
         },
         {
-            "Mii Gunner": [
-                "07C0020000230002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Palutena",
+            "id": "07420000001F0002"
         },
         {
-            "Mewtwo": [
-                "19960000023D0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Dark Pit",
+            "id": "0741000000200002"
         },
         {
-            "Falco": [
-                "05810000001C0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Zero Suit Samus",
+            "id": "05C00100001D0002"
         },
         {
-            "Lucas": [
-                "2281000002510002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Ganondorf",
+            "id": "01020100001B0002"
         },
         {
-            "Roy": [
-                "2104000002520002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Dr Mario",
+            "id": "0000010000190002"
         },
         {
-            "Ryu": [
-                "34C0000002530002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Bowser Jr",
+            "id": "0006000000150002"
         },
         {
-            "Cloud": [
-                "3600000002590002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Olimar",
+            "id": "06400100001E0002"
         },
         {
-            "Corrin": [
-                "21050000025A0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mr Game & Watch",
+            "id": "07800000002D0002"
         },
         {
-            "Bayonetta": [
-                "32400000025B0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "ROB",
+            "id": "0781000000330002"
         },
         {
-            "Inkling": [
-                "0800010003820002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Duck Hunt",
+            "id": "07820000002F0002"
         },
         {
-            "Ridley": [
-                "05C20000037F0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mii Brawler",
+            "id": "07C0000000210002"
         },
         {
-            "Wolf": [
-                "05840000037E0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mii Swordfighter",
+            "id": "07C0010000220002"
         },
         {
-            "King K Rool": [
-                "00C00000037B0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mii Gunner",
+            "id": "07C0020000230002"
         },
         {
-            "Ice Climbers": [
-                "078F000003810002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Mewtwo",
+            "id": "19960000023D0002"
         },
         {
-            "Piranha Plant": [
-                "00240000038D0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Falco",
+            "id": "05810000001C0002"
         },
         {
-            "Daisy": [
-                "00130000037A0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Lucas",
+            "id": "2281000002510002"
         },
         {
-            "Isabelle": [
-                "01810000037D0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Roy",
+            "id": "2104000002520002"
         },
         {
-            "Pichu": [
-                "19AC000003850002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Ryu",
+            "id": "34C0000002530002"
         },
         {
-            "Ken": [
-                "34C1000003890002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Cloud",
+            "id": "3600000002590002"
         },
         {
-            "Young Link": [
-                "01000000037C0002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Corrin",
+            "id": "21050000025A0002"
         },
         {
-            "Pokemon Trainer": [
-                "1D40000003870002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Bayonetta",
+            "id": "32400000025B0002"
         },
         {
-            "Snake": [
-                "37800000038A0002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Ivysaur": [
-                "1902000003830002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Squirtle": [
-                "1907000003840002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Simon": [
-                "37C00000038B0002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Incineroar": [
-                "1BD7000003860002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Chrom": [
-                "2108000003880002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Dark Samus": [
-                "05C3000003800002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Richter": [
-                "37C10000038C0002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Joker": [
-                "3A00000003A10002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Hero": [
-                "3640000003A20002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Banjo": [
-                "3B40000003A30002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Terry": [
-                "3C80000003A40002",
-                {
-                    "enabled": true
-                }
-            ]
-        },
-        {
-            "Byleth": [
-                "210B000003A50002",
-                {
-                    "enabled": true
-                }
-            ]
+            "name": "Inkling",
+            "id": "0800010003820002"
+        },
+        {
+            "name": "Ridley",
+            "id": "05C20000037F0002"
+        },
+        {
+            "name": "Wolf",
+            "id": "05840000037E0002"
+        },
+        {
+            "name": "King K Rool",
+            "id": "00C00000037B0002"
+        },
+        {
+            "name": "Ice Climbers",
+            "id": "078F000003810002"
+        },
+        {
+            "name": "Piranha Plant",
+            "id": "00240000038D0002"
+        },
+        {
+            "name": "Daisy",
+            "id": "00130000037A0002"
+        },
+        {
+            "name": "Isabelle",
+            "id": "01810000037D0002"
+        },
+        {
+            "name": "Pichu",
+            "id": "19AC000003850002"
+        },
+        {
+            "name": "Ken",
+            "id": "34C1000003890002"
+        },
+        {
+            "name": "Young Link",
+            "id": "01000000037C0002"
+        },
+        {
+            "name": "Pokemon Trainer",
+            "id": "1D40000003870002"
+        },
+        {
+            "name": "Snake",
+            "id": "37800000038A0002"
+        },
+        {
+            "name": "Ivysaur",
+            "id": "1902000003830002"
+        },
+        {
+            "name": "Squirtle",
+            "id": "1907000003840002"
+        },
+        {
+            "name": "Simon",
+            "id": "37C00000038B0002"
+        },
+        {
+            "name": "Incineroar",
+            "id": "1BD7000003860002"
+        },
+        {
+            "name": "Chrom",
+            "id": "2108000003880002"
+        },
+        {
+            "name": "Dark Samus",
+            "id": "05C3000003800002"
+        },
+        {
+            "name": "Richter",
+            "id": "37C10000038C0002"
+        },
+        {
+            "name": "Joker",
+            "id": "3A00000003A10002"
+        },
+        {
+            "name": "Hero",
+            "id": "3640000003A20002"
+        },
+        {
+            "name": "Banjo",
+            "id": "3B40000003A30002"
+        },
+        {
+            "name": "Terry",
+            "id": "3C80000003A40002"
+        },
+        {
+            "name": "Byleth",
+            "id": "210B000003A50002"
+        },
+        {
+            "name": "Min Min",
+            "id": "0a400000041d0002"
         }
     ]
 }
