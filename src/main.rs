@@ -158,7 +158,7 @@ async fn dispatch_error(ctx: &Context, msg: &Message, error: DispatchError, _com
 #[tokio::main]
 async fn main() {
     // Configure the client with your Discord bot token in the environment.
-    let token = "Nzk4Njk4MTAyMjA1NzEwMzk4.X_4zkg.iHaaCaB8W_Ep3aoGn0zAeCwh_PE".to_string();
+    let token = "TOKEN".to_string();
 
     let http = Http::new(&token);
 
