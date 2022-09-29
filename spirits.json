@@ -1,0 +1,2041 @@
+[{
+	"description": null,
+	"id": 128,
+	"name": "Impact Run",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 129,
+	"name": "129",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 130,
+	"name": "Lava-Floor Resist",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 131,
+	"name": "Item Gravitation",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 132,
+	"name": "132",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 133,
+	"name": "Chance of Double Final Smash",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 134,
+	"name": "Double Final Smash",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 135,
+	"name": "135",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 136,
+	"name": "136",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 137,
+	"name": "Metal and Giant",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["SOURCE: PRIMARY SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 138,
+	"name": "Giant",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 139,
+	"name": "Dash Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 140,
+	"name": "Armor Knight",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["BIG 5", "OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 141,
+	"name": "141",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 142,
+	"name": "Energy Shot Attack/Resistance up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 143,
+	"name": "Hammer Duration up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 144,
+	"name": "Boomerang Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 145,
+	"name": "Item Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: UNKNOWN"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 146,
+	"name": "146",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 147,
+	"name": "147",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 148,
+	"name": "148",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 149,
+	"name": "149",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 150,
+	"name": "150",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 151,
+	"name": "Perfect-Shield Reflect",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 152,
+	"name": "Weapon Attack & Move Speed up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 153,
+	"name": "Shooting Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 154,
+	"name": "Charge Speed & Power up",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["SOURCE: UNKNOWN", "UNKNOWN"],
+	"type": "UNKNOWN"
+}, {
+	"description": null,
+	"id": 155,
+	"name": "155",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 156,
+	"name": "Screen-Flip Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 157,
+	"name": "Fog Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 158,
+	"name": "Gravity-Change Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 159,
+	"name": "Stamina up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 160,
+	"name": "Strong-Wind Resist",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 161,
+	"name": "Strong-Wind Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 162,
+	"name": "Critical-Health Healing",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["RECOVERY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 163,
+	"name": "Special-Move Power up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 164,
+	"name": "164",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 165,
+	"name": "Bob-omb Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 166,
+	"name": "Hothead Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 167,
+	"name": "Super Leaf Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 168,
+	"name": "Super Launch Star Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 169,
+	"name": "Beastball Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 170,
+	"name": "Death's Scythe Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 171,
+	"name": "Mr. Saturn Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 172,
+	"name": "Unira Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 173,
+	"name": "Rocket Belt Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 174,
+	"name": "Black Hole Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 175,
+	"name": "175",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 176,
+	"name": "Stats up up after Eating",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 177,
+	"name": "177",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 178,
+	"name": "Critical-Health Stats up up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 179,
+	"name": "Critical Hit up up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 180,
+	"name": "Great Autoheal",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["BIG 5", "RECOVERY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 181,
+	"name": "Steel Diver Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 182,
+	"name": "Banana Gun Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 183,
+	"name": "Rage Blaster Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 184,
+	"name": "Staff Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 185,
+	"name": "Fire Bar Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 186,
+	"name": "Screw Attack Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 187,
+	"name": "Bomber Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 188,
+	"name": "Cucco Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: UNOBTAINABLE"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 189,
+	"name": "Neutral Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 190,
+	"name": "Neutral Attack up up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 191,
+	"name": "Tilt Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 192,
+	"name": "Tilt Attack up up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 193,
+	"name": "Air Attack up up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 194,
+	"name": "Mighty Throw",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 195,
+	"name": "Special-Move Power up up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 196,
+	"name": "Super Easy Dodging",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 197,
+	"name": "197",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 198,
+	"name": "Landing Lag down down",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 199,
+	"name": "Become Heavy",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: UNKNOWN", "UNKNOWN"],
+	"type": "UNKNOWN"
+}, {
+	"description": null,
+	"id": 200,
+	"name": "Meteor Smashes up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 201,
+	"name": "Poisoned Smash",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 202,
+	"name": "No Penalty for Continuous Dodging",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 203,
+	"name": "Airborne Endurance",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 204,
+	"name": "Sprinting Endurance",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 205,
+	"name": "Perfect-Shield Recovery",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 206,
+	"name": "Masterful Fall Break",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 207,
+	"name": "Healing-Item Attraction",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 208,
+	"name": "Attack up When Healthy",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 209,
+	"name": "Defense up When Healthy",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 210,
+	"name": "Endless Smash Holding",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 211,
+	"name": "Heal with Smash Attacks",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 212,
+	"name": "Activities up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 213,
+	"name": "Giant Killer",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 214,
+	"name": "Metal Killer",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 215,
+	"name": "Assist Killer",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 216,
+	"name": "Jam FS Charge",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 217,
+	"name": "Weapon Resist up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 218,
+	"name": "Hyper Smash Attacks",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 219,
+	"name": "Neutral Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 220,
+	"name": "Tilt Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 221,
+	"name": "Special-Move Power up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 222,
+	"name": "Air Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 223,
+	"name": "223",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 224,
+	"name": "224",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 225,
+	"name": "225",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 226,
+	"name": "226",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 227,
+	"name": "Item Autograb",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 228,
+	"name": "Team Power Up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 229,
+	"name": "Weight up up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: PRIMARY SPIRIT", "WEIGHT"],
+	"type": "WEIGHT"
+}, {
+	"description": null,
+	"id": 230,
+	"name": "Poison Power Up",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 231,
+	"name": "Critical Fast Final Smash Meter up up",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 232,
+	"name": "Critical-Health Healing up up",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["RECOVERY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 233,
+	"name": "Critical Super Giant",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 234,
+	"name": "Mouthful of Curry up up",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 235,
+	"name": "Final Smash up",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 237,
+	"name": "237",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 239,
+	"name": "239",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 240,
+	"name": "240",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 241,
+	"name": "241",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 242,
+	"name": "242",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 243,
+	"name": "243",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 244,
+	"name": "244",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 245,
+	"name": "245",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 246,
+	"name": "246",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 247,
+	"name": "247",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 248,
+	"name": "248",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 249,
+	"name": "249",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 250,
+	"name": "250",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 251,
+	"name": "251",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 252,
+	"name": "252",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 253,
+	"name": "253",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 254,
+	"name": "254",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 236,
+	"name": "Critical Healing & Metal",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "SPECIAL"],
+	"type": "SPECIAL"
+}, {
+	"description": null,
+	"id": 238,
+	"name": "Weapon Attack & Move Speed up up",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 1,
+	"name": "Move Speed up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "MOBILITY"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 2,
+	"name": "Hyper Smash Attacks",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "ATTACK"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 4,
+	"name": "Jump up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "MOBILITY"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 5,
+	"name": "Additional Midair Jump",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "MOBILITY"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 6,
+	"name": "Lifesteal",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: PRIMARY SPIRIT", "RECOVERY"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 7,
+	"name": "Defense up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: SKILL TREE", "SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 8,
+	"name": "Easier Dodging",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "MOBILITY"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 9,
+	"name": "Easier Perfect Shield",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "DEFENSE"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 10,
+	"name": "Super Armor",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "BIG 5", "DEFENSE"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 11,
+	"name": "Slow Super Armor",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: SUPPORT SPIRIT", "BIG 5", "DEFENSE"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 12,
+	"name": "Trade-Off Attacks up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 13,
+	"name": "Trade-Off Defense up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 14,
+	"name": "Trade-Off Speed up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 15,
+	"name": "Trade-Off Ability up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 16,
+	"name": "Critical-Health Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 17,
+	"name": "Critical-Health Defense up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 18,
+	"name": "Critical-Health Stats up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 19,
+	"name": "Critical Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 20,
+	"name": "Autoheal",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["BIG 5", "RECOVERY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 21,
+	"name": "Poison Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 22,
+	"name": "Poison Damage Reduced",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 23,
+	"name": "Poison Heals",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 24,
+	"name": "Lava-Floor Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 25,
+	"name": "Sticky-Floor Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 26,
+	"name": "Beam Sword Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 27,
+	"name": "Lip's Stick Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 28,
+	"name": "Star Rod Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 29,
+	"name": "Ore Club Equipped",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 30,
+	"name": "Home-Run Bat Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: UNOBTAINABLE"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 31,
+	"name": "Ray Gun Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 32,
+	"name": "Super Scope Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 33,
+	"name": "Gust Bellows Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: UNOBTAINABLE"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 34,
+	"name": "Drill Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 35,
+	"name": "Green Shell Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 36,
+	"name": "Poke Ball Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: UNOBTAINABLE"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 37,
+	"name": "37",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 38,
+	"name": "Back Shield Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 39,
+	"name": "Bunny Hood Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 40,
+	"name": "Made of Metal",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 41,
+	"name": "Mouthful of Curry",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 42,
+	"name": "Franklin Badge Equipped",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 43,
+	"name": "Hammer Equipped",
+	"notes": null,
+	"slot_cost": 3,
+	"tags": ["ITEM", "SOURCE: UNOBTAINABLE"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 44,
+	"name": "Fairy Bottle Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 45,
+	"name": "Fire Flower Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 46,
+	"name": "Freezie Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 47,
+	"name": "Ramblin' Evil Mushroom Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 48,
+	"name": "Killing Edge Equipped",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 49,
+	"name": "49",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 50,
+	"name": "Physical Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 51,
+	"name": "Weapon Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 52,
+	"name": "Fist Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 53,
+	"name": "Foot Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 54,
+	"name": "Aura Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 55,
+	"name": "Magic Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 56,
+	"name": "PSI Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 57,
+	"name": "57",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 58,
+	"name": "Fire & Explosion Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 59,
+	"name": "59",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 60,
+	"name": "Electric Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 61,
+	"name": "Energy-Shot Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 62,
+	"name": "Water & Ice Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 63,
+	"name": "Magic Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 64,
+	"name": "PSI Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 0,
+	"name": "None",
+	"notes": null,
+	"slot_cost": 0,
+	"tags": ["SOURCE: NONE", "NONE"],
+	"type": "NONE"
+}, {
+	"description": null,
+	"id": 3,
+	"name": "3",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 65,
+	"name": "65",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 66,
+	"name": "Fire/Explosion Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 67,
+	"name": "67",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 68,
+	"name": "68",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 69,
+	"name": "Electric Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 70,
+	"name": "Energy-Shot Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 71,
+	"name": "71",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 72,
+	"name": "Water/Freezing Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 73,
+	"name": "Aura Resist up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 74,
+	"name": "Zap-Floor Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 75,
+	"name": "Slumber Immunity",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 76,
+	"name": "Ice-Floor Immunity",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 77,
+	"name": "Falling Immunity",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 78,
+	"name": "Bury Immunity",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 79,
+	"name": "Braking Ability up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["MOBILITY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 80,
+	"name": "Mobility",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: UNKNOWN", "UNKNOWN"],
+	"type": "UNKNOWN"
+}, {
+	"description": null,
+	"id": 81,
+	"name": "Landing Lag down",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["MOBILITY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 82,
+	"name": "Lightweight",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["MOBILITY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 83,
+	"name": "Shield Damage up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 84,
+	"name": "Air Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 85,
+	"name": "Air Defense up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 86,
+	"name": "Neutral Special up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 87,
+	"name": "Side Special up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 88,
+	"name": "Up Special up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 89,
+	"name": "Down Special up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 90,
+	"name": "Strong Throw",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 91,
+	"name": "Unflinching Charged Smashes",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 92,
+	"name": "Toss & Meteor",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 93,
+	"name": "93",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 94,
+	"name": "Critical Hit up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ATTACK", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ATTACK"
+}, {
+	"description": null,
+	"id": 95,
+	"name": "Swimmer",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 96,
+	"name": "Shield Durability up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["DEFENSE", "SOURCE: SUPPORT SPIRIT"],
+	"type": "DEFENSE"
+}, {
+	"description": null,
+	"id": 97,
+	"name": "Improved Escape",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 98,
+	"name": "98",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 99,
+	"name": "99",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 100,
+	"name": "100",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 101,
+	"name": "Battering Items up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 102,
+	"name": "Shooting Items up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 103,
+	"name": "Thrown Items up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 104,
+	"name": "KOs Heal Damage",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["RECOVERY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 105,
+	"name": "Invincibility after Eating",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 106,
+	"name": "Stats up after Eating",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["ITEM", "SOURCE: SUPPORT SPIRIT"],
+	"type": "ITEM"
+}, {
+	"description": null,
+	"id": 107,
+	"name": "107",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 108,
+	"name": "First-Strike Advantage",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 109,
+	"name": "109",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 110,
+	"name": "Running Start",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 111,
+	"name": "111",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 112,
+	"name": "Fast Final Smash Meter",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 114,
+	"name": "Healing Shield",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["RECOVERY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "RECOVERY"
+}, {
+	"description": null,
+	"id": 115,
+	"name": "115",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 116,
+	"name": "116",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 117,
+	"name": "Floaty Jumps",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["MOBILITY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "MOBILITY"
+}, {
+	"description": null,
+	"id": 118,
+	"name": "118",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 119,
+	"name": "Irreversible Controls",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["HAZARD", "SOURCE: SUPPORT SPIRIT"],
+	"type": "HAZARD"
+}, {
+	"description": null,
+	"id": 120,
+	"name": "Recovery Items up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 121,
+	"name": "Transformation Duration up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 122,
+	"name": "Undamaged Attack up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 123,
+	"name": "Undamaged Speed up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 124,
+	"name": "Undamaged Attack & Speed up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["OTHER", "SOURCE: SUPPORT SPIRIT"],
+	"type": "OTHER"
+}, {
+	"description": null,
+	"id": 125,
+	"name": "125",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 126,
+	"name": "126",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SOURCE: NONE", "UNUSED"],
+	"type": "UNUSED"
+}, {
+	"description": null,
+	"id": 127,
+	"name": "Edge Grab up",
+	"notes": null,
+	"slot_cost": 1,
+	"tags": ["SKILL TREE", "SOURCE: SKILL TREE"],
+	"type": "SKILL TREE"
+}, {
+	"description": null,
+	"id": 113,
+	"name": "Instadrop",
+	"notes": null,
+	"slot_cost": 2,
+	"tags": ["MOBILITY", "SOURCE: SUPPORT SPIRIT"],
+	"type": "MOBILITY"
+}]
