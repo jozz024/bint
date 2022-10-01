@@ -304,8 +304,8 @@ async fn transplant(ctx: &Context, msg: &Message, mut args: Args) -> CommandResu
     amiibo_utils::transplant::transplant(character.as_str(), &mut dump);
 
     dump.lock();
-
-    let f = [(&dump.data[..], "test.bin")];
+    let filename =  msg.attachments[0].filename.clone();
+    let f = [(&dump.data[..], filename.as_str())];
     msg.channel_id.send_message(&ctx.http, |m| {
         m.content("file sent!");
         m.files(f);
@@ -354,8 +354,9 @@ async fn set_spirits(ctx: &Context, msg: &Message, mut args: Args) -> CommandRes
 
     dump.data[304..520].clone_from_slice(&checksum);
 
-    dump.lock();
-    let f = [(&dump.data[..], "test.bin")];
+    dump.lock();    
+    let filename =  msg.attachments[0].filename.clone();
+    let f = [(&dump.data[..], filename.as_str())];
     msg.channel_id.send_message(&ctx.http, |m| {
         m.content("file sent!");
         m.files(f);
@@ -406,8 +407,8 @@ async fn rename(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
     amiibo_utils::rename::rename(&mut dump, name);
 
     dump.lock();
-
-    let f = [(&dump.data[..], "test.bin")];
+    let filename =  msg.attachments[0].filename.clone();
+    let f = [(&dump.data[..], filename.as_str())];
     msg.channel_id.send_message(&ctx.http, |m| {
         m.content("file sent!");
         m.files(f);
@@ -433,8 +434,8 @@ async fn shufflesn(ctx: &Context, msg: &Message, _args: Args) -> CommandResult {
     amiibo_utils::shuffle::shuffle_uid(&mut dump);
 
     dump.lock();
-
-    let f = [(&dump.data[..], "test.bin")];
+    let filename =  msg.attachments[0].filename.clone();
+    let f = [(&dump.data[..], filename.as_str())];
     msg.channel_id.send_message(&ctx.http, |m| {
         m.content("file sent!");
         m.files(f);
@@ -458,8 +459,8 @@ async fn json_to_bin(ctx: &Context, msg: &Message, _args: Args) -> CommandResult
     let mut dump = amiibo_utils::ryujinx::json_to_bin(json.as_str());
 
     dump.lock();
-
-    let f = [(&dump.data[..], "test.bin")];
+    let filename =  msg.attachments[0].filename.clone().replace(".json", ".bin");
+    let f = [(&dump.data[..], filename.as_str())];
     msg.channel_id.send_message(&ctx.http, |m| {
         m.content("file sent!");
         m.files(f);
@@ -484,8 +485,8 @@ async fn bin_to_json(ctx: &Context, msg: &Message, _args: Args) -> CommandResult
     dump.unlock();
 
     let amiibo_json = amiibo_utils::ryujinx::bin_to_json(&mut dump);
-
-    let f = [(amiibo_json.as_bytes(), "test.json")];
+    let filename =  msg.attachments[0].filename.clone().replace(".bin", ".json");
+    let f = [(amiibo_json.as_bytes(), filename.as_str())];
     msg.channel_id.send_message(&ctx.http, |m| {
         m.content("file sent!");
         m.files(f);
