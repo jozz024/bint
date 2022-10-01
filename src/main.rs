@@ -3,6 +3,7 @@
 mod amiibo_utils;
 mod utils;
 use amiibo::keys::AmiiboMasterKey;
+use serenity::model::prelude::Activity;
 use std::collections::{HashMap, HashSet};
 use std::sync::Arc;
 use lazy_static::lazy_static;
@@ -48,7 +49,10 @@ struct Handler;
 
 #[async_trait]
 impl EventHandler for Handler {
-    async fn ready(&self, _: Context, ready: Ready) {
+    async fn ready(&self, ctx: Context, ready: Ready) {
+        let activity = Activity::listening("Amiibo modification bot.");
+        let status = serenity::model::user::OnlineStatus::Idle;
+        ctx.set_presence(Some(activity), status).await;
         println!("{} is connected!", ready.user.name);
     }
 }

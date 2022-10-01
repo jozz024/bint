@@ -42,7 +42,9 @@ dependencies = [
 
 [[package]]
 name = "amiibo"
-version = "0.1.0"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a781695c0b0496055a7444f4c27b930bf95a073521ffa45743b8e8424c7d8010"
 dependencies = [
  "aes-ctr",
  "aes-soft",
